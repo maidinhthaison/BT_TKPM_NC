@@ -1,0 +1,21 @@
+{
+  "name": "chuongtrinh3_nodejs",
+  "version": "1.0.0",
+  "description": "Chuong trinh nodejs 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "20810229@student.hcmus.edu.vn",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "portfinder": "^1.0.32"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
