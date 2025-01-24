@@ -23,13 +23,10 @@ const getNhanVien = async (req, res, next) => {
         );
     
         const response = {
-            items : arrayNhanVien
+            listDonVi : uniqueArrayDonvi,
+            listChiNhanh : uniqueArrayChinhanh,
+            listNhanVien : arrayNhanVien
         }
-        response.items.forEach(element => {
-            console.log(element.Ho_ten);
-            
-          });
-        
         res.status(200).send(response); 
     }catch(error){
         console.log(res.status);
@@ -37,4 +34,23 @@ const getNhanVien = async (req, res, next) => {
     }
 }
 
-module.exports = { getNhanVien }
+const traCuuNhanVien = async (req, res, next) => {
+    try{ 
+       
+        const params = req.body.params;
+        console.log(params);
+        
+        // let objectResponse = {
+        //     hoten : params.hoten,
+        //     tuoi : tuoi
+        // }
+       
+        res.status(200).send(objectResponse); 
+        res.status(200).send(params); 
+    }catch(error){
+        console.log(res.status);
+        res.status(400).send(error.message);
+    }
+}
+
+module.exports = { getNhanVien, traCuuNhanVien }
