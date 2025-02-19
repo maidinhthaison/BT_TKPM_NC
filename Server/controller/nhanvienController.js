@@ -40,13 +40,17 @@ const traCuuNhanVien = async (req, res, next) => {
         const params = req.body.params;
         console.log(params);
         
-        // let objectResponse = {
-        //     hoten : params.hoten,
-        //     tuoi : tuoi
-        // }
-       
-        res.status(200).send(objectResponse); 
-        res.status(200).send(params); 
+        let arrayNhanVien = parseJson();
+        let  result = arrayNhanVien.filter(nhanvien =>
+            (nhanvien.Don_vi.Ma_so == params.donVi || nhanvien.Don_vi.Chi_nhanh.Ma_so == params.chiNhanh) &&
+            nhanvien.Ho_ten.toLowerCase().includes(params.tukhoa.toLowerCase())
+          );
+        const response = {
+        
+            listNhanVien : result
+        }
+        console.log(response);
+        res.status(200).send(response); 
     }catch(error){
         console.log(res.status);
         res.status(400).send(error.message);
