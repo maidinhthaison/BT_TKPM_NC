@@ -44,6 +44,7 @@
       <table>
         <thead>
           <tr>
+            <th>Hình đại diện</th>
             <th>Mã số</th>
             <th>Họ tện</th>
             <th>Đơn vị</th>
@@ -54,6 +55,7 @@
         <tbody>
           {{#each listNhanVien}}
             <tr>
+                <td><img id="myImage" width="100" height="100" src="{{imagePath}}" alt="My Image"></td>
                 <td>{{Ma_so}}</td>
                 <td>{{Ho_ten}}</td>
                 <td>{{Don_vi.Ten}}</td>

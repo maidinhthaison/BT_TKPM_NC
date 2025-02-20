@@ -1,5 +1,7 @@
 const { parseJson } = require('../controller/jsonController');
-
+const path = require('path');
+const config = require('../config');
+var pathFile = path.join('Tra_cuu_Nhan_vien_Du_lieu', 'Media');
 const getNhanVien = async (req, res, next) => {
     try{ 
        
@@ -40,16 +42,22 @@ const traCuuNhanVien = async (req, res, next) => {
         const params = req.body.params;
         console.log(params);
         
+        
         let arrayNhanVien = parseJson();
         let  result = arrayNhanVien.filter(nhanvien =>
             (nhanvien.Don_vi.Ma_so == params.donVi || nhanvien.Don_vi.Chi_nhanh.Ma_so == params.chiNhanh) &&
             nhanvien.Ho_ten.toLowerCase().includes(params.tukhoa.toLowerCase())
           );
+        result.forEach(nv => {
+            nv.imagePath = config.url + '/' + pathFile + '/' + nv.Ma_so + '.png'
+        })
         const response = {
         
             listNhanVien : result
         }
+        
         console.log(response);
+      
         res.status(200).send(response); 
     }catch(error){
         console.log(res.status);
