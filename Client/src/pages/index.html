@@ -7,19 +7,17 @@
     <link rel="stylesheet" href="../css/main.css" />
   </head>
   <body>
-    <div>
       <form action="" class="" id="frm">
           <div id="container"></div>
         
       </form>
       
+      <div id="search_result_table"></div>
+
       <script src="../js/app.js"></script>
+
       <script id="template" type="text/x-handlebars-template">
-          <!-- <ul>
-            {{#each items}}
-              <li>{{Ho_ten}}</li>
-            {{/each}}
-          </ul>        -->
+        
           <label>Đơn Vị</label>
           <select name="cbDonVi" id="cbDonVi">
             {{#each listDonVi}}
@@ -40,6 +38,35 @@
     
     </div>
     
+
+    <script id="search_result_template" type="text/x-handlebars-template">
+      <h3>Danh sách nhân viên</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Mã số</th>
+            <th>Họ tện</th>
+            <th>Đơn vị</th>
+            <th>Chi nhánh</th>
+            <th>Mức lương</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each listNhanVien}}
+            <tr>
+                <td>{{Ma_so}}</td>
+                <td>{{Ho_ten}}</td>
+                <td>{{Don_vi.Ten}}</td>
+                <td>{{Don_vi.Chi_nhanh.Ten}}</td>
+                <td>{{Muc_luong}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+    </script>
+
+</div>
     
   </body>
 </html>
