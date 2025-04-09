@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quản Lý Karaoke 2</title>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="../public/css/main.css" />
+  </head>
+  <body>
+      <form action="" class="" id="loginForm">
+          <!-- <div id="container"></div> -->
+          <label for="username">Mã số:</label>
+          <input type="text" id="edt_maso" name="edt_maso" placeholder="Mã số" value="NV_1" required>
+          <br><br>
+      
+          <label for="password">Mật khẩu:</label>
+          <input type="password" id="edt_mk" name="edt_mk" placeholder="Mật khẩu" value="NV_1" required>
+          <br><br>
+      
+          <button type="submit" id="btnDangNhap">Login</button>
+      </form>
+      
+      <!-- <div id="search_result_table"></div> -->
+
+      <script src="../js/app.js"></script>
+
+      <!-- <script id="template" type="text/x-handlebars-template">
+        
+          <label>Đơn Vị</label>
+          <select name="cbDonVi" id="cbDonVi">
+            {{#each listDonVi}}
+              <option id="{{Ma_so}}">{{Ten}}</option>
+            {{/each}}
+          </select>
+
+          <label>Chi Nhánh</label>
+          <select name="cbChiNhanh" id="cbChiNhanh">
+            {{#each listChiNhanh}}
+              <option id="{{Ma_so}}">{{Ten}}</option>
+            {{/each}}
+          </select>
+          <br><br>
+          <input type="text" id="tukhoa"  name="tukhoa">
+          <button id="btnTraCuu" type="submit">Tra cứu</button>
+      </script> -->
+    
+    </div>
+    
+
+    <!-- <script id="search_result_template" type="text/x-handlebars-template">
+      <h3>Danh sách nhân viên</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Hình đại diện</th>
+            <th>Mã số</th>
+            <th>Họ tện</th>
+            <th>Đơn vị</th>
+            <th>Chi nhánh</th>
+            <th>Mức lương</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each listNhanVien}}
+            <tr>
+                <td><img id="myImage" width="100" height="100" src="{{imagePath}}" alt="My Image"></td>
+                <td>{{Ma_so}}</td>
+                <td>{{Ho_ten}}</td>
+                <td>{{Don_vi.Ten}}</td>
+                <td>{{Don_vi.Chi_nhanh.Ten}}</td>
+                <td>{{Muc_luong}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+    </script> -->
+
+</div>
+    
+  </body>
+</html>

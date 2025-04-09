@@ -1,63 +1,72 @@
 import "regenerator-runtime/runtime";
 import Handlebars from "handlebars";
-const { apiClient } = require("./client");
-const { endpoint } = require("./endpoint");
+import { apiClient } from "./client";
+import { endpoint } from "./endpoint";
 
 
-const getNhanVien = async () => {
-  const url = endpoint.getNhanNv;
-  console.log(url);
+const xulyLogin = async () => {
+  const url = endpoint.dangNhapEndPoint;
   
   apiClient
-    .get(url)
+    .post(url)
     .then((response) => {
-      const data = response.data;
-      const source = document.getElementById('template').innerHTML;
-      const template = Handlebars.compile(source);  
-      const html = template(data);
-      document.getElementById('container').innerHTML = html;      
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
-};
-window.addEventListener("load", async (event) => {
-  await getNhanVien();
-});
-
-
-const traCuuNhanVien = async (params) => {
-  const url = endpoint.traCuuNv;
-  
-  apiClient
-    .post(url, {
-         params,
-     })
-    .then((response) => {
-      const data = response.data;
-      const source = document.getElementById('search_result_template').innerHTML;
-      const template = Handlebars.compile(source);  
-      const html = template(data);
-      document.getElementById('search_result_table').innerHTML = html;     
+    //   const data = response.data;
+    //   const source = document.getElementById('template').innerHTML;
+    //   const template = Handlebars.compile(source);  
+    //   const html = template(data);
+    //   document.getElementById('container').innerHTML = html;      
+        const data = response.data;
+        console.log(data);
     })
     .catch((error) => {
       console.error("Error:", error);
     });
 };
 
-const form = document.getElementById("frm");
+const form = document.getElementById("loginForm");
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  let cbDonVi = document.getElementById("cbDonVi");
-  let cbChiNhanh = document.getElementById("cbChiNhanh");
-  let donVi = cbDonVi.options[cbDonVi.selectedIndex].id;
-  let chiNhanh = cbChiNhanh.options[cbChiNhanh.selectedIndex].id;
-  let tukhoa = document.getElementById("tukhoa").value;
-  
+  const maso = document.getElementById("edt_maso").value;
+  const mk = document.getElementById("edt_mk").value;
+
   const params = {
-    donVi: donVi,
-    chiNhanh: chiNhanh,
-    tukhoa: tukhoa
+    maSo: maso,
+    matKhau: mk,
   };
-  await traCuuNhanVien(params);
+  await xulyLogin(params);
 });
+
+// const button = document.getElementById("btn");
+// button.addEventListener("click",  async () => {
+//   await traCuuNhanVien();
+// });
+
+// const getLoiChaoTen = async (params) => {
+//   const url = endpoint.loichao;
+//   apiClient
+//     .post(url, {
+//       params,
+//     })
+//     .then((response) => {
+//       const res = response.data;
+//       console.log(res);
+//       document.getElementById(
+//         "demo"
+//       ).innerHTML = `Xin chào ${res.hoten} bạn ${res.tuoi} tuổi`;
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//     });
+// };
+// const form = document.getElementById("form");
+// form.addEventListener("submit", async (event) => {
+//   event.preventDefault();
+//   const hotenInput = document.getElementById("hoten");
+//   const dateInput = document.getElementById("dateInput");
+
+//   const params = {
+//     hoten: hotenInput.value,
+//     ngaysinh: dateInput.value,
+//   };
+//   await getLoiChaoTen(params);
+// });
