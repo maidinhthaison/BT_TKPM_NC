@@ -1,0 +1,83 @@
+[
+  {
+    "hoTen": "Bành đình thụy Khuê",
+    "maSo": "NV_1",
+    "tenDangNhap": "NV_1",
+    "matKhau": "NV_1",
+
+    "dienThoai": "0949134444",
+
+    "khuVuc": {
+      "maSo": "kv1",
+      "tenKhuVuc": "Khu vực A"
+    }
+  },
+  {
+    "hoTen": "Nguyễn Văn A",
+    "maSo": "NV_2",
+    "tenDangNhap": "NV_2",
+    "matKhau": "NV_2",
+
+    "dienThoai": "0949130000",
+
+    "khuVuc": {
+      "maSo": "kv2",
+      "tenKhuVuc": "Khu vực B"
+    }
+  },
+  {
+    "hoTen": "Trần văn B",
+    "maSo": "NV_3",
+    "tenDangNhap": "NV_3",
+    "matKhau": "NV_3",
+
+    "dienThoai": "0949131111",
+
+    "khuVuc": {
+      "maSo": "kv2",
+      "tenKhuVuc": "Khu vực C"
+    }
+  },
+  {
+    "hoTen": "Quản lýt Quang văn C",
+    "maSo": "NV_4",
+    "tenDangNhap": "NV_4",
+    "matKhau": "NV_4",
+
+    "dienThoai": "0912131111",
+
+    "khuVuc": [
+      {
+        "maSo": "kv1",
+        "tenKhuVuc": "Khu vực A"
+      },
+      {
+        "maSo": "kv2",
+        "tenKhuVuc": "Khu vực B"
+      }
+    ]
+  },
+  {
+    "hoTen": "Quản lý Nguyễn Văn D",
+    "maSo": "NV_5",
+    "tenDangNhap": "NV_5",
+    "matKhau": "NV_5",
+
+    "dienThoai": "0944132222",
+
+    "khuVuc": [
+      {
+        "maSo": "kv1",
+        "tenKhuVuc": "Khu vực A"
+      }
+    ]
+  },
+  {
+    "hoTen": "Giám đốc Trần Văn E",
+    "maSo": "NV_6",
+    "tenDangNhap": "NV_6",
+    "matKhau": "NV_6",
+
+    "dienThoai": "0949112345"
+  }
+]

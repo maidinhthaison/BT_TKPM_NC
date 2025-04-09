@@ -1,0 +1,26 @@
+[
+  {
+    "hoTen": "Khách hàng A",
+    "cccd": "1234567890",
+    "sdt": "0912345678",
+    "namsinh": "2000"
+  },
+  {
+    "hoTen": "Khách hàng B",
+    "cccd": "1234567890",
+    "sdt": "0912322233",
+    "namsinh": "1999"
+  },
+  {
+    "hoTen": "Khách hàng C",
+    "cccd": "1234567890",
+    "sdt": "0912377755",
+    "namsinh": "2001"
+  },
+  {
+    "hoTen": "Khách hàng D",
+    "cccd": "1234567890",
+    "sdt": "0912300033",
+    "namsinh": "1990"
+  }
+]

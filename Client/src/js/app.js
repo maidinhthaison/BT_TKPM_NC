@@ -1,38 +1,45 @@
 import "regenerator-runtime/runtime";
 import Handlebars from "handlebars";
-const { apiClient } = require("./client");
-const { endpoint } = require("./endpoint");
+import { apiClient } from "./client";
+import { endpoint } from "./endpoint";
 
 
-const traCuuNhanVien = async () => {
-  const url = endpoint.traCuuNv;
+const xulyLogin = async () => {
+  const url = endpoint.dangNhapEndPoint;
   
   apiClient
-    .get(url)
+    .post(url)
     .then((response) => {
-      const data = response.data;
-      const source = document.getElementById('template').innerHTML;
-      const template = Handlebars.compile(source);  
-      const html = template(data);
-      document.getElementById('container').innerHTML = html;      
+    //   const data = response.data;
+    //   const source = document.getElementById('template').innerHTML;
+    //   const template = Handlebars.compile(source);  
+    //   const html = template(data);
+    //   document.getElementById('container').innerHTML = html;      
+        const data = response.data;
+        console.log(data);
     })
     .catch((error) => {
       console.error("Error:", error);
     });
 };
-const button = document.getElementById("btn");
-button.addEventListener("click",  async () => {
-  await traCuuNhanVien();
+
+const form = document.getElementById("loginForm");
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const maso = document.getElementById("edt_maso").value;
+  const mk = document.getElementById("edt_mk").value;
+
+  const params = {
+    maSo: maso,
+    matKhau: mk,
+  };
+  await xulyLogin(params);
 });
 
-
-
-
-
-
-
-
-
+// const button = document.getElementById("btn");
+// button.addEventListener("click",  async () => {
+//   await traCuuNhanVien();
+// });
 
 // const getLoiChaoTen = async (params) => {
 //   const url = endpoint.loichao;
