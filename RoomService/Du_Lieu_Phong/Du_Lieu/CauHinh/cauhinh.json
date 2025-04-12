@@ -1,0 +1,20 @@
+[
+  {
+    "id": "CH1",
+    "khachToiDa": "4",
+    "dongiaPhong": "300000",
+    "ngayCapNhat": "2025-01-02"
+  },
+  {
+    "id": "CH2",
+    "khachToiDa": "2",
+    "dongiaPhong": "200000",
+    "ngayCapNhat": "2025-03-02"
+  },
+  {
+    "id": "CH3",
+    "khachToiDa": "1",
+    "dongiaPhong": "100000",
+    "ngayCapNhat": "2025-04-02"
+  }
+]

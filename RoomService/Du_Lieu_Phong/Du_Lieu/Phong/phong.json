@@ -1,0 +1,222 @@
+[
+  {
+    "id": "1",
+    "tenPhong": "Phòng 101",
+    "trangThai": "Trống",
+    "loaiPhong": {
+      "id": "LP1",
+      "tenLoaiPhong": "Vip",
+      "dongiaPhong": "300000",
+      "tienNghi": "Máy lạnh, Tivi, Wifi",
+      "khachToiDa": "4",
+      "cauHinh": {
+        "id": "CH1",
+        "khachToiDa": "4",
+        "dongiaPhong": "300000",
+        "ngayCapNhat": "2025-01-02"
+      }
+    },
+    "tang": {
+      "id": "1",
+      "tenTang": "Tầng 1"
+    }
+  },
+  {
+    "id": "2",
+    "tenPhong": "Phòng 102",
+    "trangThai": "Đã đặt",
+    "loaiPhong": {
+      "id": "LP2",
+      "tenLoaiPhong": "Bình dân",
+      "dongiaPhong": "250000",
+      "tienNghi": "Máy quạt, Wifi",
+      "khachToiDa": "3",
+      "cauHinh": {
+        "id": "CH2",
+        "khachToiDa": "3",
+        "dongiaPhong": "250000",
+        "ngayCapNhat": "2025-02-02"
+      }
+    },
+    "tang": {
+      "id": "1",
+      "tenTang": "Tầng 1"
+    }
+  },
+  {
+    "id": "3",
+    "tenPhong": "Phòng 201",
+    "trangThai": "Trống",
+    "loaiPhong": {
+      "id": "LP1",
+      "tenLoaiPhong": "Vip",
+      "dongiaPhong": "300000",
+      "tienNghi": "Máy lạnh, Tivi, Wifi",
+      "khachToiDa": "4",
+      "cauHinh": {
+        "id": "CH1",
+        "khachToiDa": "4",
+        "dongiaPhong": "300000",
+        "ngayCapNhat": "2025-01-02"
+      }
+    },
+    "tang": {
+      "id": "2",
+      "tenTang": "Tầng 2"
+    }
+  },
+  {
+    "id": "4",
+    "tenPhong": "Phòng 202",
+    "trangThai": "Đã đặt",
+    "loaiPhong": {
+      "id": "LP2",
+      "tenLoaiPhong": "Bình dân",
+      "dongiaPhong": "250000",
+      "tienNghi": "Máy quạt, Wifi",
+      "khachToiDa": "3",
+      "cauHinh": {
+        "id": "CH2",
+        "khachToiDa": "3",
+        "dongiaPhong": "250000",
+        "ngayCapNhat": "2025-02-02"
+      }
+    },
+    "tang": {
+      "id": "2",
+      "tenTang": "Tầng 2"
+    }
+  },
+  {
+    "id": "5",
+    "tenPhong": "Phòng 301",
+    "trangThai": "Trống",
+    "loaiPhong": {
+      "id": "LP2",
+      "tenLoaiPhong": "Bình dân",
+      "dongiaPhong": "250000",
+      "tienNghi": "Máy quạt, Wifi",
+      "khachToiDa": "3",
+      "cauHinh": {
+        "id": "CH2",
+        "khachToiDa": "3",
+        "dongiaPhong": "250000",
+        "ngayCapNhat": "2025-02-02"
+      }
+    },
+    "tang": {
+      "id": "3",
+      "tenTang": "Tầng 3"
+    }
+  },
+  {
+    "id": "6",
+    "tenPhong": "Phòng 302",
+    "trangThai": "Đã đặt",
+    "loaiPhong": {
+      "id": "LP2",
+      "tenLoaiPhong": "Bình dân",
+      "dongiaPhong": "250000",
+      "tienNghi": "Máy quạt, Wifi",
+      "khachToiDa": "3",
+      "cauHinh": {
+        "id": "CH2",
+        "khachToiDa": "3",
+        "dongiaPhong": "250000",
+        "ngayCapNhat": "2025-02-02"
+      }
+    },
+    "tang": {
+      "id": "3",
+      "tenTang": "Tầng 3"
+    }
+  },
+  {
+    "id": "7",
+    "tenPhong": "Phòng 401",
+    "trangThai": "Trống",
+    "loaiPhong": {
+      "id": "LP2",
+      "tenLoaiPhong": "Bình dân",
+      "dongiaPhong": "250000",
+      "tienNghi": "Máy quạt, Wifi",
+      "khachToiDa": "3",
+      "cauHinh": {
+        "id": "CH2",
+        "khachToiDa": "3",
+        "dongiaPhong": "250000",
+        "ngayCapNhat": "2025-02-02"
+      }
+    },
+    "tang": {
+      "id": "4",
+      "tenTang": "Tầng 4"
+    }
+  },
+  {
+    "id": "8",
+    "tenPhong": "Phòng 402",
+    "trangThai": "Đã đặt",
+    "loaiPhong": {
+      "id": "LP2",
+      "tenLoaiPhong": "Bình dân",
+      "dongiaPhong": "250000",
+      "tienNghi": "Máy quạt, Wifi",
+      "khachToiDa": "3",
+      "cauHinh": {
+        "id": "CH2",
+        "khachToiDa": "3",
+        "dongiaPhong": "250000",
+        "ngayCapNhat": "2025-02-02"
+      }
+    },
+    "tang": {
+      "id": "4",
+      "tenTang": "Tầng 4"
+    }
+  },
+  {
+    "id": "9",
+    "tenPhong": "Phòng 501",
+    "trangThai": "Trống",
+    "loaiPhong": {
+      "id": "LP2",
+      "tenLoaiPhong": "Bình dân",
+      "dongiaPhong": "250000",
+      "tienNghi": "Máy quạt, Wifi",
+      "khachToiDa": "3",
+      "cauHinh": {
+        "id": "CH2",
+        "khachToiDa": "3",
+        "dongiaPhong": "250000",
+        "ngayCapNhat": "2025-02-02"
+      }
+    },
+    "tang": {
+      "id": "5",
+      "tenTang": "Tầng 5"
+    }
+  },
+  {
+    "id": "10",
+    "tenPhong": "Phòng 502",
+    "trangThai": "Đã đặt",
+    "loaiPhong": {
+      "id": "LP2",
+      "tenLoaiPhong": "Bình dân",
+      "dongiaPhong": "250000",
+      "tienNghi": "Máy quạt, Wifi",
+      "khachToiDa": "3",
+      "cauHinh": {
+        "id": "CH2",
+        "khachToiDa": "3",
+        "dongiaPhong": "250000",
+        "ngayCapNhat": "2025-02-02"
+      }
+    },
+    "tang": {
+      "id": "5",
+      "tenTang": "Tầng 5"
+    }
+  }
+]
