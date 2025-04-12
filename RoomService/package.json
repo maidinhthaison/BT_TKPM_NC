@@ -1,0 +1,36 @@
+{
+  "name": "roomservice",
+  "version": "1.0.0",
+  "description": "Room Service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maidinhthaison/BT_TKPM_NC.git"
+  },
+  "keywords": [
+    "microservice",
+    "handlebars",
+    "nodejs",
+    "json"
+  ],
+  "author": "20810229@student.hcmus.edu.vn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maidinhthaison/BT_TKPM_NC/issues"
+  },
+  "homepage": "https://github.com/maidinhthaison/BT_TKPM_NC#readme",
+  "type": "module",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

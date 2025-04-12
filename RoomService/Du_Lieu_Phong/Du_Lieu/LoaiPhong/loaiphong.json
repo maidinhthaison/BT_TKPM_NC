@@ -1,0 +1,41 @@
+[
+  {
+    "id": "LP1",
+    "tenLoaiPhong": "Vip",
+    "dongiaPhong": "300000",
+    "tienNghi": "Máy lạnh, Tivi, Wifi",
+    "khachToiDa": "4",
+    "cauHinh": {
+      "id": "CH1",
+      "khachToiDa": "4",
+      "dongiaPhong": "300000",
+      "ngayCapNhat": "2025-01-02"
+    }
+  },
+  {
+    "id": "LP2",
+    "tenLoaiPhong": "Bình dân",
+    "dongiaPhong": "250000",
+    "tienNghi": "Máy quạt, Wifi",
+    "khachToiDa": "3",
+    "cauHinh": {
+      "id": "CH2",
+      "khachToiDa": "3",
+      "dongiaPhong": "250000",
+      "ngayCapNhat": "2025-02-02"
+    }
+  },
+  {
+    "id": "LP2",
+    "tenLoaiPhong": "Bình dân",
+    "dongiaPhong": "250000",
+    "tienNghi": "Máy quạt",
+    "khachToiDa": "1",
+    "cauHinh": {
+      "id": "CH3",
+      "khachToiDa": "1",
+      "dongiaPhong": "100000",
+      "ngayCapNhat": "2025-04-02"
+    }
+  }
+]
