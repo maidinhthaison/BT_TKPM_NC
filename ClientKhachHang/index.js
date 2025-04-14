@@ -10,7 +10,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const app = express();
 app.use(express.static("public"));
+// Middleware to parse JSON and URL-encoded form data
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.engine(
   ".hbs",
@@ -25,44 +27,21 @@ app.engine(
 app.set("view engine", ".hbs");
 app.set("views", "./views");
 
-
-const fakeApi = () => {
-  return [
-    {
-      name: "Katarina",
-      lane: "midlaner",
-    },
-    {
-      name: "Jayce",
-      lane: "toplaner",
-    },
-    {
-      name: "Heimerdinger",
-      lane: "toplaner",
-    },
-    {
-      name: "Zed",
-      lane: "midlaner",
-    },
-    {
-      name: "Azir",
-      lane: "midlaner",
-    },
-  ];
-};
-
 // getAllRooms
 
 app.get("/", async (req, res) => {
   try {
     const response = await apiClient.get(endPoint.getAllRoomsEndPoint);
-    console.log(response.data);
-    
-    res.render("main", {
-      layout: "index",
-      listPhong: response.data.listPhong,
-      status: response.data.status
-    });
+    if (response.data.status == 'OK') {
+       res.render("main", {
+        layout: "index",
+        listPhong: response.data.listPhong,
+        status: response.data.status
+      });
+    }else {
+        res.status(400).send("Lỗi 400 lấy dữ liệu thất bại");
+    }
+
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -77,6 +56,49 @@ app.get("/about", (req, res) => {
 
 app.get("/contact", (req, res) => {
   res.render("contact", { layout: "contactLayout" });
+});
+
+app.post("/search", async (req, res) => {
+  try {
+
+    console.log(`AAAA:>>>${req.body.keyword}`);
+    
+    const response = await apiClient.post(endPoint.searchRoomsEndPoint, {
+      params: {
+        keyword: req.body.keyword,
+      },
+    });
+    console.log(`response: ${JSON.stringify(response.data, null, 2)}`);
+    if (response.data.status == 'OK') {
+      if (response.data.listPhong.length == 0) {
+        res.render("main", {
+          layout: "index",
+          listPhong: [],
+          message: "Không tìm thấy phòng nào",
+          status: response.data.status
+        });
+      }else{
+        res.render("main", {
+          layout: "index",
+          listPhong: response.data.listPhong,
+          message: "",
+          status: response.data.status
+        });
+      }
+      
+    }else {
+        res.render("main", {
+          layout: "index",
+          listPhong: [],
+          message: "Lỗi 400 lấy dữ liệu thất bại",
+          status: response.data.status
+        });
+    }
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Server error");
+  }
 });
 
 app.listen(config.port, () =>
