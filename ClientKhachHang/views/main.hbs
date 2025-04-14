@@ -1,108 +1,21 @@
 {{>header}}
-<style>
-  table {
-    width: 70%;
-    border-collapse: collapse; /* Merge borders for a cleaner look */
-    font-family: sans-serif;
-    font-size: 0.9em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    border-radius: 5px 5px 0 0; /* Rounded top corners */
-    overflow: hidden; /* Hide overflow for rounded corners on some browsers */
-}
+<form id="searchForm" action="/search" method="post">
+  <div class="search-container">
+    <input type="text" id="inputSearch" name="keyword" placeholder="Tìm kiếm phòng..." />
+    <button type="submit" id="searchButton">Tìm kiếm</button>
+  </div>
+</form>
+<p class="center-text">{{message}}</p>
+<div class="grid-container">
+  {{#each listPhong}}
+      <div class="grid-item">{{tenPhong}} <br>
+        {{tang.tenTang}} <br>
+        Đơn giá: {{loaiPhong.cauHinh.dongiaPhong}} <br>
+        Khách tối đa: {{loaiPhong.cauHinh.khachToiDa}} <br>
+        {{trangThai}} <br>
+      </div>
+  {{/each}}
+</div>
 
-thead {
-    background-color: #f2f2f2; /* Light gray background for header */
-    font-weight: bold;
-    color: #333;
-}
-
-th, td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd; /* Light gray bottom border for rows */
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9; /* Slightly different background for even rows */
-}
-
-tbody tr:hover {
-    background-color: #e0f2f7; /* Light blue on hover for interactivity */
-    cursor: pointer; /* Indicate interactivity */
-}
-
-/* Optional: Styling for specific columns */
-.numeric {
-    text-align: right;
-}
-
-.status-active {
-    color: green;
-    font-weight: bold;
-}
-
-.status-inactive {
-    color: red;
-}
-
-/* Optional: Responsive adjustments (basic example) */
-@media (max-width: 600px) {
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    tr {
-        border: 1px solid #ccc;
-        margin-bottom: 10px;
-        border-radius: 5px;
-    }
-
-    td {
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
-    }
-
-    td:before {
-        position: absolute;
-        top: 6px;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        font-weight: bold;
-        content: attr(data-column); /* Get column name from data-column attribute */
-    }
-}
-
-</style>
-<table class="styled-table">
-  <thead>
-    <tr>
-      <th>Tên phòng</th>
-      <th>Tầng</th>
-      <th>Giá phòng</th>
-      <th>Khách tối đa</th>
-      <th>Trạng thái</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each listPhong}}
-            <tr>
-              <td>{{tenPhong}}</td>
-              <td>{{tang.tenTang}}</td>
-              <td>{{loaiPhong.cauHinh.dongiaPhong}}</td>
-              <td>{{loaiPhong.cauHinh.khachToiDa}}</td>
-              <td>{{trangThai}}</td>
-            </tr>
-        {{/each}}
-  </tbody>
-</table>
 {{>footer}}
+

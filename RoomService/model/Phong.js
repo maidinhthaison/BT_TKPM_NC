@@ -10,13 +10,4 @@ export class Phong {
     this.loaiPhong = LoaiPhong.fromJson(loaiPhong);
     this.tang = Tang.fromJson(tang);
   }
-
-  static fromJson(json) {
-    return new Phong(json);
-  }
-
-  static fromJsonArray(jsonArray) {
-    return jsonArray.map(item => new Phong(item));
-  }
-  
 }
