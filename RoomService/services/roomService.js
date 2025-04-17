@@ -1,7 +1,9 @@
 import fs from "fs";
-import path from "path";
+import path, { parse } from "path";
 import { Phong } from "../model/Phong.js";
-var pathPhongJson = path.join("Du_Lieu_Phong", "Du_Lieu", "Phong");
+
+const pathPhongJson = path.join("Du_Lieu_Phong", "Du_Lieu", "Phong");
+
 var jsonFile = "phong.json";
 
 const parseJson = () => {
@@ -9,17 +11,24 @@ const parseJson = () => {
   return JSON.parse(fileContent); // Parse the JSON string into an object
 };
 
-function fromJsonArray(listPhongObject) {
-  return listPhongObject.map((item) => new Phong(item));
+export function createPhongList() {
+  const phongArray = parseJson();
+  return phongArray.map((item) => new Phong(
+    item.id,
+    item.tenPhong,
+    item.trangThai,
+    item.loaiPhong,
+    item.khuVuc,
+    item.hinh
+  ));
+  
 }
 
 export const xulyGetAllRooms = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const listPhongObject = parseJson();
-
-      const mappedRooms = fromJsonArray(listPhongObject);
-
+      const mappedRooms = createPhongList();
+     
       if (mappedRooms) {
         resolve({
           status: "OK",
@@ -43,33 +52,30 @@ export const xulyGetAllRooms = () => {
 export const searchRooms = (keyword) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const listPhongObject = parseJson();
-
-      const mappedRooms = fromJsonArray(listPhongObject);
-
+      const mappedRooms = createPhongList();
       // Convert keyword to lowercase for case-insensitive search
       const lowerCaseKeyword = keyword.toLowerCase();
 
       // Filter rooms based on the keyword
-      const searchResult = mappedRooms.filter((room) => {
+      const searchResult = mappedRooms.filter(room => {
         return (
-          room.tenPhong.toLowerCase().includes(lowerCaseKeyword) || // Search by room name
-          room.tang.tenTang.toLowerCase().includes(lowerCaseKeyword) || // Search by floor name
+          room.tenPhong.toLowerCase().includes(lowerCaseKeyword) || 
+          room.khuVuc.tenKv.toLowerCase().includes(lowerCaseKeyword) || 
           room.loaiPhong.cauHinh.dongiaPhong
             .toString()
-            .includes(lowerCaseKeyword) || // Search by price
+            .includes(lowerCaseKeyword) || 
           room.loaiPhong.cauHinh.khachToiDa
             .toString()
-            .includes(lowerCaseKeyword) || // Search by max guests
-          room.trangThai.toLowerCase().includes(lowerCaseKeyword) // Search by status
+            .includes(lowerCaseKeyword) ||
+          room.trangThai.toLowerCase().includes(lowerCaseKeyword) 
         );
       });
       console.log(`searchResult: ${searchResult.length}`);
 
       resolve({
-        status: "OK",
-        listPhong: searchResult,
-      });
+          status: "OK",
+          listPhong: searchResult,
+        });
     } catch (error) {
       reject({
         status: "error",

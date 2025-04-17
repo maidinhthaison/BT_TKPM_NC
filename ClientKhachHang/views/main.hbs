@@ -8,13 +8,15 @@
 <p class="center-text">{{message}}</p>
 <div class="grid-container">
   {{#each listPhong}}
-      <div class="grid-item">{{tenPhong}} <br>
-        {{tang.tenTang}} <br>
-        Đơn giá: {{loaiPhong.cauHinh.dongiaPhong}} <br>
+      <div class="grid-item">
+        <img width="400px" height="200px" src="{{formatLinkHinh}}"/><br>
+        {{formatTenPhong}} <br>
+        Đơn giá: {{formatGiaPhong}} <br>
         Khách tối đa: {{loaiPhong.cauHinh.khachToiDa}} <br>
         {{trangThai}} <br>
       </div>
-  {{/each}}
+  {{/each}} 
+  
 </div>
 
 {{>footer}}

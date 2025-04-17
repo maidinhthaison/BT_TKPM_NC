@@ -1,0 +1,57 @@
+[
+    {
+      "id": 1,
+      "tenKv": "Khu Vực A",
+      "tang": [
+        {
+          "id" : "1",
+          "tenTang" : "Tầng 1"
+        },
+        {
+          "id" : "2",
+          "tenTang" : "Tầng 2"
+        },
+        {
+          "id" : "3",
+          "tenTang" : "Tầng 3"
+        }
+    
+      ]
+    },
+    {
+      "id": 2,
+      "tenKv": "Khu Vực B",
+      "tang": [
+        {
+          "id" : "1",
+          "tenTang" : "Tầng 1"
+        },
+        {
+          "id" : "2",
+          "tenTang" : "Tầng 2"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "tenKv": "Khu Vực C",
+      "tang": [
+        {
+          "id" : "1",
+          "tenTang" : "Tầng 1"
+        },
+        {
+          "id" : "2",
+          "tenTang" : "Tầng 2"
+        },
+        {
+          "id" : "3",
+          "tenTang" : "Tầng 3"
+        },
+        {
+          "id" : "4",
+          "tenTang" : "Tầng 4"
+        }
+      ]
+    }
+  ]

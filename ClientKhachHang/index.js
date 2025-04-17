@@ -19,7 +19,7 @@ app.engine(
   engine({
     extname: ".hbs",
     layoutsDir: __dirname + "/views/layouts",
-    defaultLayout: "planB",
+    defaultLayout: "main",
     partialsDir: __dirname + "/views/partials/",
   })
 );
@@ -60,8 +60,6 @@ app.get("/contact", (req, res) => {
 
 app.post("/search", async (req, res) => {
   try {
-
-    console.log(`AAAA:>>>${req.body.keyword}`);
     
     const response = await apiClient.post(endPoint.searchRoomsEndPoint, {
       params: {
@@ -96,7 +94,7 @@ app.post("/search", async (req, res) => {
     }
 
   } catch (err) {
-    console.error(err);
+    console.error(err.message);
     res.status(500).send("Server error");
   }
 });

@@ -1,13 +1,32 @@
 import { LoaiPhong } from './LoaiPhong.js';
-import { Tang } from './Tang.js';
+import { KhuVuc } from './KhuVuc.js';
+import { config } from '../config.js';
+import { formatCurrency } from '../utils.js';
 export class Phong {
-  constructor({
-    id, tenPhong, trangThai, loaiPhong, tang
-  }) {
+  constructor(id, tenPhong, trangThai, loaiPhong, khuVuc, hinh) {
     this.id = id;
     this.tenPhong = tenPhong;
-    this.trangThai = trangThai;
-    this.loaiPhong = LoaiPhong.fromJson(loaiPhong);
-    this.tang = Tang.fromJson(tang);
+    this.trangThai = trangThai === "1" ? TrangThaiPhong.TRONG : TrangThaiPhong.DA_DUOC_THUE;
+    this.loaiPhong = new LoaiPhong(
+      loaiPhong.id,
+      loaiPhong.tenLoaiPhong,
+      loaiPhong.dongiaPhong,
+      loaiPhong.tienNghi,
+      loaiPhong.khachToiDa,
+      loaiPhong.cauHinh
+    );
+    this.khuVuc = new KhuVuc(
+      khuVuc.id,
+      khuVuc.tenKv,
+      khuVuc.tang
+    );
+    this.hinh = hinh;
+    this.formatLinkHinh = config.url + '/Media/' + this.hinh;
+    this.formatTenPhong = this.khuVuc.tenKv + '-' + this.khuVuc.tang[0].tenTang + '-' + this.tenPhong;
+    this.formatGiaPhong = formatCurrency(loaiPhong.dongiaPhong, 'vi-VN', 'VND') + '/giờ';
   }
 }
+const TrangThaiPhong = Object.freeze({
+  TRONG: "Đang trống",
+  DA_DUOC_THUE: "Đã được thuê"
+});

@@ -2,7 +2,7 @@
   {
     "id": "1",
     "tenPhong": "Phòng 101",
-    "trangThai": "Trống",
+    "trangThai": "0",
     "loaiPhong": {
       "id": "LP1",
       "tenLoaiPhong": "Vip",
@@ -16,15 +16,30 @@
         "ngayCapNhat": "2025-01-02"
       }
     },
-    "tang": {
+    "khuVuc": {
       "id": "1",
-      "tenTang": "Tầng 1"
-    }
+      "tenKv": "Khu Vực A",
+      "tang": [
+        {
+          "id": "1",
+          "tenTang": "Tầng 1"
+        },
+        {
+          "id": "2",
+          "tenTang": "Tầng 2"
+        },
+        {
+          "id": "3",
+          "tenTang": "Tầng 3"
+        }
+      ]
+    },
+    "hinh": "hinh_1.png"
   },
   {
     "id": "2",
     "tenPhong": "Phòng 102",
-    "trangThai": "Đã đặt",
+    "trangThai": "1",
     "loaiPhong": {
       "id": "LP2",
       "tenLoaiPhong": "Bình dân",
@@ -38,15 +53,30 @@
         "ngayCapNhat": "2025-02-02"
       }
     },
-    "tang": {
+    "khuVuc": {
       "id": "1",
-      "tenTang": "Tầng 1"
-    }
+      "tenKv": "Khu Vực A",
+      "tang": [
+        {
+          "id": "1",
+          "tenTang": "Tầng 1"
+        },
+        {
+          "id": "2",
+          "tenTang": "Tầng 2"
+        },
+        {
+          "id": "3",
+          "tenTang": "Tầng 3"
+        }
+      ]
+    },
+    "hinh": "hinh_2.png"
   },
   {
     "id": "3",
     "tenPhong": "Phòng 201",
-    "trangThai": "Trống",
+    "trangThai": "0",
     "loaiPhong": {
       "id": "LP1",
       "tenLoaiPhong": "Vip",
@@ -60,15 +90,26 @@
         "ngayCapNhat": "2025-01-02"
       }
     },
-    "tang": {
-      "id": "2",
-      "tenTang": "Tầng 2"
-    }
+    "khuVuc": {
+      "id": "1",
+      "tenKv": "Khu Vực A",
+      "tang": [
+        {
+          "id": "1",
+          "tenTang": "Tầng 1"
+        },
+        {
+          "id": "2",
+          "tenTang": "Tầng 2"
+        }
+      ]
+    },
+    "hinh": "hinh_3.png"
   },
   {
     "id": "4",
     "tenPhong": "Phòng 202",
-    "trangThai": "Đã đặt",
+    "trangThai": "1",
     "loaiPhong": {
       "id": "LP2",
       "tenLoaiPhong": "Bình dân",
@@ -82,15 +123,34 @@
         "ngayCapNhat": "2025-02-02"
       }
     },
-    "tang": {
-      "id": "2",
-      "tenTang": "Tầng 2"
-    }
+    "khuVuc": {
+      "id": "3",
+      "tenKv": "Khu Vực C",
+      "tang": [
+        {
+          "id": "1",
+          "tenTang": "Tầng 1"
+        },
+        {
+          "id": "2",
+          "tenTang": "Tầng 2"
+        },
+        {
+          "id": "3",
+          "tenTang": "Tầng 3"
+        },
+        {
+          "id": "4",
+          "tenTang": "Tầng 4"
+        }
+      ]
+    },
+    "hinh": "hinh_4.png"
   },
   {
     "id": "5",
     "tenPhong": "Phòng 301",
-    "trangThai": "Trống",
+    "trangThai": "0",
     "loaiPhong": {
       "id": "LP2",
       "tenLoaiPhong": "Bình dân",
@@ -104,15 +164,34 @@
         "ngayCapNhat": "2025-02-02"
       }
     },
-    "tang": {
+    "khuVuc": {
       "id": "3",
-      "tenTang": "Tầng 3"
-    }
+      "tenKv": "Khu Vực C",
+      "tang": [
+        {
+          "id": "1",
+          "tenTang": "Tầng 1"
+        },
+        {
+          "id": "2",
+          "tenTang": "Tầng 2"
+        },
+        {
+          "id": "3",
+          "tenTang": "Tầng 3"
+        },
+        {
+          "id": "4",
+          "tenTang": "Tầng 4"
+        }
+      ]
+    },
+    "hinh": "hinh_5.png"
   },
   {
     "id": "6",
     "tenPhong": "Phòng 302",
-    "trangThai": "Đã đặt",
+    "trangThai": "1",
     "loaiPhong": {
       "id": "LP2",
       "tenLoaiPhong": "Bình dân",
@@ -126,15 +205,34 @@
         "ngayCapNhat": "2025-02-02"
       }
     },
-    "tang": {
+    "khuVuc": {
       "id": "3",
-      "tenTang": "Tầng 3"
-    }
+      "tenKv": "Khu Vực C",
+      "tang": [
+        {
+          "id": "1",
+          "tenTang": "Tầng 1"
+        },
+        {
+          "id": "2",
+          "tenTang": "Tầng 2"
+        },
+        {
+          "id": "3",
+          "tenTang": "Tầng 3"
+        },
+        {
+          "id": "4",
+          "tenTang": "Tầng 4"
+        }
+      ]
+    },
+    "hinh": "hinh_6.png"
   },
   {
     "id": "7",
     "tenPhong": "Phòng 401",
-    "trangThai": "Trống",
+    "trangThai": "0",
     "loaiPhong": {
       "id": "LP2",
       "tenLoaiPhong": "Bình dân",
@@ -148,15 +246,26 @@
         "ngayCapNhat": "2025-02-02"
       }
     },
-    "tang": {
-      "id": "4",
-      "tenTang": "Tầng 4"
-    }
+    "khuVuc": {
+      "id": "2",
+      "tenKv": "Khu Vực B",
+      "tang": [
+        {
+          "id": "1",
+          "tenTang": "Tầng 1"
+        },
+        {
+          "id": "2",
+          "tenTang": "Tầng 2"
+        }
+      ]
+    },
+    "hinh": "hinh_7.png"
   },
   {
     "id": "8",
     "tenPhong": "Phòng 402",
-    "trangThai": "Đã đặt",
+    "trangThai": "1",
     "loaiPhong": {
       "id": "LP2",
       "tenLoaiPhong": "Bình dân",
@@ -170,15 +279,26 @@
         "ngayCapNhat": "2025-02-02"
       }
     },
-    "tang": {
-      "id": "4",
-      "tenTang": "Tầng 4"
-    }
+    "khuVuc": {
+      "id": "3",
+      "tenKv": "Khu Vực B",
+      "tang": [
+        {
+          "id": "1",
+          "tenTang": "Tầng 1"
+        },
+        {
+          "id": "2",
+          "tenTang": "Tầng 2"
+        }
+      ]
+    },
+    "hinh": "hinh_8.png"
   },
   {
     "id": "9",
     "tenPhong": "Phòng 501",
-    "trangThai": "Trống",
+    "trangThai": "0",
     "loaiPhong": {
       "id": "LP2",
       "tenLoaiPhong": "Bình dân",
@@ -192,15 +312,26 @@
         "ngayCapNhat": "2025-02-02"
       }
     },
-    "tang": {
-      "id": "5",
-      "tenTang": "Tầng 5"
-    }
+    "khuVuc": {
+      "id": "3",
+      "tenKv": "Khu Vực B",
+      "tang": [
+        {
+          "id": "1",
+          "tenTang": "Tầng 1"
+        },
+        {
+          "id": "2",
+          "tenTang": "Tầng 2"
+        }
+      ]
+    },
+    "hinh": "hinh_9.png"
   },
   {
     "id": "10",
     "tenPhong": "Phòng 502",
-    "trangThai": "Đã đặt",
+    "trangThai": "1",
     "loaiPhong": {
       "id": "LP2",
       "tenLoaiPhong": "Bình dân",
@@ -214,9 +345,20 @@
         "ngayCapNhat": "2025-02-02"
       }
     },
-    "tang": {
-      "id": "5",
-      "tenTang": "Tầng 5"
-    }
+    "khuVuc": {
+      "id": "3",
+      "tenKv": "Khu Vực B",
+      "tang": [
+        {
+          "id": "1",
+          "tenTang": "Tầng 1"
+        },
+        {
+          "id": "2",
+          "tenTang": "Tầng 2"
+        }
+      ]
+    },
+    "hinh": "hinh_10.png"
   }
 ]
