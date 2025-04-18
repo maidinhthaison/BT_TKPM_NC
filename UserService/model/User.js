@@ -1,23 +1,12 @@
-import { KhuVuc } from './KhuVuc.js';
+import { KhuVuc } from "./KhuVuc.js";
+
 export class User {
-  constructor({
-    hoTen, maSo, tenDangNhap, matKhau,
-    dienThoai, kv
-  }) {
+  constructor(hoTen, maSo, tenDangNhap, matKhau, dienThoai, kv = []) {
     this.hoTen = hoTen;
     this.maSo = maSo;
     this.tenDangNhap = tenDangNhap;
     this.matKhau = matKhau;
     this.dienThoai = dienThoai;
-    this.kv = kv
+    this.khuVuc = kv.map((item) => new KhuVuc(item.id, item.tenKv));
   }
-
-  static fromJson(json) {
-    return new User(json);
-  }
-
-  static fromJsonArray(jsonArray) {
-    return jsonArray.map(item => new User(item));
-  }
-  
 }

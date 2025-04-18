@@ -1,11 +1,11 @@
 {{>header}}
 <form id="searchForm" action="/search" method="post">
   <div class="search-container">
-    <input type="text" id="inputSearch" name="inputSearch" placeholder="Tìm kiếm phòng..." />
+    <input type="text" id="inputSearch" name="keyword" placeholder="Tìm kiếm..." />
     <button type="submit" id="searchButton">Tìm kiếm</button>
   </div>
 </form>
-<p class="center-text">{{message}}</p>
+{{!-- <p class="center-text">{{message}}</p>
 <div class="grid-container">
   {{#each listPhong}}
       <div class="grid-item">
@@ -16,7 +16,7 @@
         {{trangThai}} <br>
       </div>
   {{/each}} 
-  
+   --}}
 </div>
 
 {{>footer}}

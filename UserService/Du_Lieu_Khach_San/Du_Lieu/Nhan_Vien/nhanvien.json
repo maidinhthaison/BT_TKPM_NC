@@ -7,10 +7,12 @@
 
     "dienThoai": "0949134444",
 
-    "khuVuc": {
-      "maSo": "kv1",
-      "tenKhuVuc": "Khu vực A"
-    }
+    "khuVuc": [
+      {
+        "id": "1",
+        "tenKv": "Khu Vực A"
+      }
+    ]
   },
   {
     "hoTen": "Nguyễn Văn A",
@@ -20,10 +22,12 @@
 
     "dienThoai": "0949130000",
 
-    "khuVuc": {
-      "maSo": "kv2",
-      "tenKhuVuc": "Khu vực B"
-    }
+   "khuVuc": [
+      {
+        "id": "3",
+        "tenKv": "Khu Vực C"
+      }
+    ]
   },
   {
     "hoTen": "Trần văn B",
@@ -33,13 +37,15 @@
 
     "dienThoai": "0949131111",
 
-    "khuVuc": {
-      "maSo": "kv2",
-      "tenKhuVuc": "Khu vực C"
-    }
+    "khuVuc": [
+      {
+        "id": "2",
+        "tenKv": "Khu Vực B"
+      }
+    ]
   },
   {
-    "hoTen": "Quản lýt Quang văn C",
+    "hoTen": "Quản lý Quang văn C",
     "maSo": "NV_4",
     "tenDangNhap": "NV_4",
     "matKhau": "NV_4",
@@ -48,12 +54,12 @@
 
     "khuVuc": [
       {
-        "maSo": "kv1",
-        "tenKhuVuc": "Khu vực A"
+        "id": "2",
+        "tenKv": "Khu Vực B"
       },
       {
-        "maSo": "kv2",
-        "tenKhuVuc": "Khu vực B"
+        "id": "3",
+        "tenKv": "Khu Vực C"
       }
     ]
   },
@@ -65,10 +71,18 @@
 
     "dienThoai": "0944132222",
 
-    "khuVuc": [
+     "khuVuc": [
       {
-        "maSo": "kv1",
-        "tenKhuVuc": "Khu vực A"
+        "id": "1",
+        "tenKv": "Khu Vực A"
+      },
+      {
+        "id": "2",
+        "tenKv": "Khu Vực B"
+      },
+      {
+        "id": "3",
+        "tenKv": "Khu Vực C"
       }
     ]
   },
@@ -77,7 +91,6 @@
     "maSo": "NV_6",
     "tenDangNhap": "NV_6",
     "matKhau": "NV_6",
-
     "dienThoai": "0949112345"
   }
 ]
