@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import nhanvienRoutes from './routes/user-routes.js';
+import userRoutes from './routes/userRoutes.js';
 
 const corsOptions ={
    origin:'*', 
@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'Du_Lieu_Khach_San')));
 
-app.use('/api',nhanvienRoutes.routes);
+app.use('/api',userRoutes.routes);
 
 
 app.listen(config.port, () => console.log(`User Service is listening on url ${config.url}`));

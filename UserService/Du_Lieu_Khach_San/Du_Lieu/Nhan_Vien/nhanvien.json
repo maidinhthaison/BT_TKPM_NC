@@ -1,12 +1,10 @@
 [
   {
-    "hoTen": "Bành đình thụy Khuê",
+    "hoTen": "Nhân viên 1",
     "maSo": "NV_1",
     "tenDangNhap": "NV_1",
-    "matKhau": "NV_1",
-
+    "matKhau": "$2b$10$E1zDXaiZiqhNMQpobPTEnO/HIjpBEVRIZhaBg3wFKKe2Jvek50qve",
     "dienThoai": "0949134444",
-
     "khuVuc": [
       {
         "id": "1",
@@ -15,14 +13,12 @@
     ]
   },
   {
-    "hoTen": "Nguyễn Văn A",
+    "hoTen": "Nhân viên 2",
     "maSo": "NV_2",
     "tenDangNhap": "NV_2",
-    "matKhau": "NV_2",
-
+    "matKhau": "$2b$10$TMhwHiRfyeSKWw.iaFUZg.Yr4ILHYJ4ha1zyKydZ.zRn0MmH9fLzy",
     "dienThoai": "0949130000",
-
-   "khuVuc": [
+    "khuVuc": [
       {
         "id": "3",
         "tenKv": "Khu Vực C"
@@ -30,13 +26,11 @@
     ]
   },
   {
-    "hoTen": "Trần văn B",
+    "hoTen": "Nhân viên 3",
     "maSo": "NV_3",
     "tenDangNhap": "NV_3",
-    "matKhau": "NV_3",
-
+    "matKhau": "$2b$10$gytk7BRgXbsPF4nd1THSYOXfD1TErX6t99JHPAjSB8rQ8oknjid0W",
     "dienThoai": "0949131111",
-
     "khuVuc": [
       {
         "id": "2",
@@ -46,12 +40,10 @@
   },
   {
     "hoTen": "Quản lý Quang văn C",
-    "maSo": "NV_4",
-    "tenDangNhap": "NV_4",
-    "matKhau": "NV_4",
-
+    "maSo": "QL_4",
+    "tenDangNhap": "QL_4",
+    "matKhau": "$2b$10$kUKY/SsFbGLucr.hh6HjLu5MCe2/PmWlkQMB6PpCl8vZ6uVa0ibfu",
     "dienThoai": "0912131111",
-
     "khuVuc": [
       {
         "id": "2",
@@ -65,13 +57,11 @@
   },
   {
     "hoTen": "Quản lý Nguyễn Văn D",
-    "maSo": "NV_5",
-    "tenDangNhap": "NV_5",
-    "matKhau": "NV_5",
-
+    "maSo": "QL_5",
+    "tenDangNhap": "QL_5",
+    "matKhau": "$2b$10$LpSb4pRasn.cgGzK.bCQXe/jPWEQLmioYj02FtDnXiM3ZSUrXBFsW",
     "dienThoai": "0944132222",
-
-     "khuVuc": [
+    "khuVuc": [
       {
         "id": "1",
         "tenKv": "Khu Vực A"
@@ -88,9 +78,10 @@
   },
   {
     "hoTen": "Giám đốc Trần Văn E",
-    "maSo": "NV_6",
-    "tenDangNhap": "NV_6",
-    "matKhau": "NV_6",
-    "dienThoai": "0949112345"
+    "maSo": "GD_6",
+    "tenDangNhap": "GD_6",
+    "matKhau": "$2b$10$4q.2vOOxldZn6ZM8R8elje/yJ1lJxe0FHaQDeSsGENAkNzHgV1Qz.",
+    "dienThoai": "0949112345",
+    "khuVuc": []
   }
 ]

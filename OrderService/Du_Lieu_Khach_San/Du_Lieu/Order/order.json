@@ -1,0 +1,136 @@
+[
+  {
+    "id": "ORD_001",
+    "ngayThue": "2023-10-01",
+    "ngayTra": "2023-10-05",
+    "tongtien": 5000000,
+    "khachHang": {
+      "cccd": "123456789012",
+      "hoTen": "Nguyễn Văn A",
+      "ngaySinh": "1990-01-01",
+      "diaChi": "123 Đường ABC, Quận 1, TP.HCM",
+      "dienThoai": "0901234567"
+    }
+  },
+  {
+    "id": "ORD_002",
+    "ngayThue": "2023-10-03",
+    "ngayTra": "2023-10-07",
+    "tongtien": 7000000,
+
+    "khachHang": {
+      "cccd": "987654321098",
+      "hoTen": "Trần Thị B",
+      "ngaySinh": "1992-02-02",
+      "diaChi": "456 Đường DEF, Quận 2, TP.HCM",
+      "dienThoai": "0912345678"
+    }
+  },
+  {
+    "id": "ORD_003",
+    "ngayThue": "2023-10-10",
+    "ngayTra": "2023-10-15",
+    "tongtien": 10000000,
+
+    "khachHang": {
+      "cccd": "456789123456",
+      "hoTen": "Lê Văn C",
+      "ngaySinh": "1988-03-03",
+      "diaChi": "789 Đường GHI, Quận 3, TP.HCM",
+      "dienThoai": "0923456789"
+    }
+  },
+  {
+    "id": "ORD_004",
+    "ngayThue": "2023-10-12",
+    "ngayTra": "2023-10-14",
+    "tongtien": 3000000,
+
+    "khachHang": {
+      "cccd": "789123456789",
+      "hoTen": "Phạm Thị D",
+      "ngaySinh": "1995-04-04",
+      "diaChi": "321 Đường JKL, Quận 4, TP.HCM",
+      "dienThoai": "0934567890"
+    }
+  },
+  {
+    "id": "ORD_005",
+    "ngayThue": "2023-10-20",
+    "ngayTra": "2023-10-25",
+    "tongtien": 8000000,
+    "cccd": "321654987321",
+    "khachHang": {
+      "cccd": "321654987321",
+      "hoTen": "Nguyễn Thị E",
+      "ngaySinh": "1993-05-05",
+      "diaChi": "654 Đường MNO, Quận 5, TP.HCM",
+      "dienThoai": "0945678901"
+    }
+  },
+  {
+    "id": "ORD_006",
+    "ngayThue": "2023-10-22",
+    "ngayTra": "2023-10-28",
+    "tongtien": 6000000,
+    "khachHang": {
+      "cccd": "654321789654",
+      "hoTen": "Nguyễn Văn F",
+      "ngaySinh": "1991-06-06",
+      "diaChi": "987 Đường PQR, Quận 6, TP.HCM",
+      "dienThoai": "0956789012"
+    }
+  },
+  {
+    "id": "ORD_007",
+    "ngayThue": "2023-10-25",
+    "ngayTra": "2023-10-30",
+    "tongtien": 9000000,
+    "khachHang": {
+      "cccd": "789654123789",
+      "hoTen": "Trần Văn G",
+      "ngaySinh": "1989-07-07",
+      "diaChi": "159 Đường STU, Quận 7, TP.HCM",
+      "dienThoai": "0967890123"
+    }
+  },
+  {
+    "id": "ORD_008",
+    "ngayThue": "2023-10-28",
+    "ngayTra": "2023-11-02",
+    "tongtien": 11000000,
+    "khachHang": {
+      "cccd": "852963741852",
+      "hoTen": "Nguyễn Thị H",
+      "ngaySinh": "1994-08-08",
+      "diaChi": "258 Đường VWX, Quận 8, TP.HCM",
+      "dienThoai": "0978901234"
+    }
+  },
+  {
+    "id": "ORD_009",
+    "ngayThue": "2023-11-01",
+    "ngayTra": "2023-11-05",
+    "tongtien": 12000000,
+    "khachHang": {
+      "cccd": "963258741963",
+      "hoTen": "Lê Thị I",
+      "ngaySinh": "1996-09-09",
+      "diaChi": "753 Đường YZ, Quận 9, TP.HCM",
+      "dienThoai": "0989012345"
+    }
+  },
+  {
+    "id": "ORD_010",
+    "ngayThue": "2023-11-05",
+    "ngayTra": "2023-11-10",
+    "tongtien": 13000000,
+    "khachHang": {
+      "cccd": "147258369147",
+      "hoTen": "Nguyễn Văn J",
+      "ngaySinh": "1997-10-10",
+      "diaChi": "369 Đường ABC, Quận 10, TP.HCM",
+      "dienThoai": "0990123456"
+    }
+  }
+]
