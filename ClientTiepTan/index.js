@@ -5,7 +5,7 @@ import { config } from "./config.js";
 import { engine } from "express-handlebars";
 import { apiClient } from "./client.js";
 import { endPoint } from "./endPoint.js";
-import { log } from "console";
+import { HTTP_CODE, MESSAGE } from "./constant.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -60,24 +60,22 @@ app.post("/login", async (req, res) => {
       maSo: req.body.edt_maso,
       matKhau: req.body.edt_mk,
     } 
-    console.log(`params: ${JSON.stringify(params, null, 2)}`);
-    
     const response = await apiClient.post(endPoint.loginEndPoint, {params});
   
-    console.log(`response: ${JSON.stringify(response.data, null, 2)}`);
-    if (response.data.status == 'OK') {
+    console.log(`Login Response>>>: ${JSON.stringify(response.data, null, 2)}`);
+    if (response.data.status == HTTP_CODE[200].code) {
       if (response.data.user) {
         res.render("login", {
           layout: "loginLayout",
           user: response.data.user,
-          message: "Đăng nhập thành công",
-          status: response.data.status
+          message: MESSAGE.LOGIN_SUCCESS,
+          status: response.data.status,
         });
       }else{
         res.render("login", {
           layout: "loginLayout",
           user: {},
-          message: "Đăng nhập thất bại",
+          message: MESSAGE.LOGIN_FAIL,
           status: response.data.status
         });
       }
@@ -86,14 +84,14 @@ app.post("/login", async (req, res) => {
         res.render("login", {
           layout: "loginLayout",
           user: {},
-          message: "Lỗi 400 đăng nhập thất bại",
+          message: MESSAGE.LOGIN_FAIL,
           status: response.data.status
         });
     }
 
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server error");
+    res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
   }
 });
 

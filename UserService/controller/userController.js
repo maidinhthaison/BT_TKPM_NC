@@ -1,27 +1,18 @@
-import { xuLyDangNhapService } from "../services/UserService.js";
+import { xuLyDangNhapService, getAllKhachHangService } from "../services/UserService.js";
+import { MESSAGE, HTTP_CODE } from "../constant.js";
 export const xuLyDangNhapController = async (req, res, next) => {
   const params = req.body.params;
   if (!params) {
-    return res.status(400).send({ message: "Thiếu tham số" });
+    return res.json({ 
+      status: HTTP_CODE[400].code,
+      message: HTTP_CODE[400].message,
+    });
   }
   const response = await xuLyDangNhapService(params.maSo, params.matKhau); 
-  console.log(`response: ${JSON.stringify(response, null, 2)}`);
-  
-  if(response.status === "OK"){
-    res.status(200).send(response);
-  }
-  else {
-    res.status(401).send(response);
-  }
+  return res.json(response)
 };
 
-// export const searchRoomsController = async (req, res, next) => {
-//   try {
-//     const params = req.body.params;
-//     const response = await searchRooms(params.keyword); 
-//     res.status(200).send(response);
-//   } catch (error) {
-//     console.log(res.status);
-//     res.status(400).send(error.message);
-//   }
-// };
+export const getAllKhachHangController = async (req, res, next) => {
+  const response = await getAllKhachHangService(); 
+  return res.json(response)
+};
