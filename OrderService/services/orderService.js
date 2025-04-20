@@ -15,6 +15,7 @@ const parseJson = () => {
 
 export function createOrderList() {
   const orderArray = parseJson();
+  
   return orderArray.map(
     (item) =>
       new Order(
@@ -22,36 +23,39 @@ export function createOrderList() {
         item.ngayThue,
         item.ngayTra,
         item.tongtien,
-        item.khachHang
+        item.khachHang,
+        item.phong
       )
   );
+
 }
 
 export const getOrderDetailsService = async () => {
   return new Promise(async (resolve, reject) => {
     try {
       const orders = await getAllOrders();
-      console.log(`getOrders>>>`, JSON.stringify(orders, null, 2));
-      
       
       const rooms = await getAllRooms();
-      console.log(`getRooms>>>`, JSON.stringify(rooms,  null, 2));
-
+    
       const khachHang = await getAllKhachHang();
-      console.log(`getAllKhachHang>>>`, JSON.stringify(khachHang, null, 2));
-      
      
       const detailedOrders = orders.orders.map((order) => {
-        const user = khachHang.khachHang.find(u => u.cccd === order.cccd);
-        const room = rooms.listPhong.find((p) => p.id === order.id);
-        return { ...order, room };
+        const khachDatPhong = khachHang.khachHang.find(kh => kh.cccd === order.khachHang.cccd);
+       
+        const phongDaDat = rooms.listPhong.find((r) => r.id === order.phong.id);
+       
+        if(khachDatPhong !== undefined && phongDaDat !== undefined){
+          return { ...order, khachDatPhong, phongDaDat };
+        }
+        
+          
       });
       console.log(`detailedOrders>>>`, JSON.stringify(detailedOrders, null, 2));
       
       resolve({
         status: HTTP_CODE[200].code,
         message: HTTP_CODE[200].message,
-        detailedOrders: []
+        detailedOrders: detailedOrders
       });
 
     } catch (error) {
@@ -69,7 +73,7 @@ export const getAllOrdersService = async () => {
   return new Promise(async (resolve, reject) => {
     try {
       let arrayOrder = await createOrderList();
-    
+     
       if (arrayOrder) {
         resolve({
           status: HTTP_CODE[200].code,
@@ -83,6 +87,7 @@ export const getAllOrdersService = async () => {
         });
       }
     } catch (error) {
+     
       reject({
         status: HTTP_CODE[503].code,
         message: HTTP_CODE[503].message,
