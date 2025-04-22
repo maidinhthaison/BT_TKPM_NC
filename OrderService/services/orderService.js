@@ -15,7 +15,6 @@ const parseJson = () => {
 
 export function createOrderList() {
   const orderArray = parseJson();
-  
   return orderArray.map(
     (item) =>
       new Order(
@@ -23,8 +22,8 @@ export function createOrderList() {
         item.ngayThue,
         item.ngayTra,
         item.tongtien,
-        item.khachHang,
-        item.phong
+        item.khachHangCccd,
+        item.phongId
       )
   );
 
@@ -39,10 +38,11 @@ export const getOrderDetailsService = async () => {
     
       const khachHang = await getAllKhachHang();
      
-      const detailedOrders = orders.orders.map((order) => {
-        const khachDatPhong = khachHang.khachHang.find(kh => kh.cccd === order.khachHang.cccd);
+      const orderDetails = orders.orders.map((order) => {
+        
+        const khachDatPhong = khachHang.khachHang.find(kh => kh.cccd === order.khachHangCccd);
        
-        const phongDaDat = rooms.listPhong.find((r) => r.id === order.phong.id);
+        const phongDaDat = rooms.listPhong.find((r) => r.id === order.phongId);
        
         if(khachDatPhong !== undefined && phongDaDat !== undefined){
           return { ...order, khachDatPhong, phongDaDat };
@@ -50,12 +50,12 @@ export const getOrderDetailsService = async () => {
         
           
       });
-      console.log(`detailedOrders>>>`, JSON.stringify(detailedOrders, null, 2));
+      //console.log(`orderDetails>>>`, JSON.stringify(detailedOrders, null, 2));
       
       resolve({
         status: HTTP_CODE[200].code,
         message: HTTP_CODE[200].message,
-        detailedOrders: detailedOrders
+        orderDetails: orderDetails
       });
 
     } catch (error) {
@@ -73,7 +73,7 @@ export const getAllOrdersService = async () => {
   return new Promise(async (resolve, reject) => {
     try {
       let arrayOrder = await createOrderList();
-     
+
       if (arrayOrder) {
         resolve({
           status: HTTP_CODE[200].code,
