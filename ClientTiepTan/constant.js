@@ -14,5 +14,6 @@ export const HTTP_CODE = Object.freeze({
     MISSING_PARAMS: "Thiếu tham số",
     USER_NOT_FOUND: "Người dùng không tồn tại",
     INVALID_PASSWORD: "Mật khẩu không hợp lệ",
+    GET_DATA_FAIL: "Lấy dữ liệu thất bại",
   });
   

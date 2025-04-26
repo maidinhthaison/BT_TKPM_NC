@@ -1,23 +1,40 @@
 {{>header}}
+
+{{#if orderDetails}}
 <form id="searchForm" action="/search" method="post">
   <div class="search-container">
     <input type="text" id="inputSearch" name="keyword" placeholder="Tìm kiếm..." />
     <button type="submit" id="searchButton">Tìm kiếm</button>
   </div>
 </form>
-{{!-- <p class="center-text">{{message}}</p>
-<div class="grid-container">
-  {{#each listPhong}}
-      <div class="grid-item">
-        <img width="400px" height="200px" src="{{formatLinkHinh}}"/><br>
-        {{formatTenPhong}} <br>
-        Đơn giá: {{formatGiaPhong}} <br>
-        Khách tối đa: {{loaiPhong.cauHinh.khachToiDa}} <br>
-        {{trangThai}} <br>
-      </div>
-  {{/each}} 
-   --}}
-</div>
-
+<div style="display: flex; flex-direction: column; min-height: 100vh;">
+  <table>
+    <thead>
+      <tr>
+        <th>Mã Order</th>
+        <th>Ngày thuê</th>
+        <th>Ngày trả</th>
+        <th>Tổng tiền</th>
+        <th>Khách hàng</th>
+        <th>Phòng đặt</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each orderDetails}}
+        <tr>
+          <td>{{id}}</td>
+          <td>{{ngayThue}}</td>
+          <td>{{ngayTra}}</td>
+          <td>{{tongtien}}</td>
+          <td>Tên: {{khachDatPhong.hoTen}}<br>SDT: {{khachDatPhong.dienThoai}}</td>
+          <td>{{phongDaDat.tenPhong}}<br>{{phongDaDat.loaiPhong.tenLoaiPhong}}</td>
+        </tr>
+      {{/each}} 
+    </tbody>
+  </table>
+</div>  
+{{else}}
+<h1>Chưa đăng nhập</h1>
+<a href="/login">Đăng nhập</a>
+{{/if}}
 {{>footer}}
-

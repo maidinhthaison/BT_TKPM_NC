@@ -2,7 +2,8 @@ import dotenv from 'dotenv';
 import assert from 'assert'; 
 dotenv.config();
 
-const {PORT, HOST, HOST_URL} = process.env;
+const {PORT, HOST, HOST_URL, ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET
+} = process.env;
 
 assert(PORT, 'Port is require');
 assert(HOST, 'Host is require');
@@ -10,5 +11,9 @@ assert(HOST, 'Host is require');
 export const config  = {
     port: PORT,
     host: HOST,
-    url: HOST_URL
+    url: HOST_URL,
+    accessTokenSecret: ACCESS_TOKEN_SECRET,
+    refreshTokenSecret: REFRESH_TOKEN_SECRET,
+    accessTokenExpiresIn: "1h",
+    refreshTokenExpiresIn: "90d",
 }
