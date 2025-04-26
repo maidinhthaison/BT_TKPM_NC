@@ -13,8 +13,6 @@ export const getAllOrdersController = async (req, res, next) => {
 
 export const getOrdersDetailsController = async (req, res, next) => {
   const response = await getOrderDetailsService();
-  console.log('response>>>',JSON.stringify(response, null, 2));
-  
   if (response.status === HTTP_CODE[200].code) {
     return res.status(HTTP_CODE[200].code).send(response);
   } else {

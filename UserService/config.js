@@ -14,6 +14,6 @@ export const config  = {
     url: HOST_URL,
     accessTokenSecret: ACCESS_TOKEN_SECRET,
     refreshTokenSecret: REFRESH_TOKEN_SECRET,
-    accessTokenExpiresIn: "24h",
-    refreshTokenExpiresIn: "30d",
+    accessTokenExpiresIn: "1h",
+    refreshTokenExpiresIn: "90d",
 }

@@ -1,13 +1,32 @@
 import axios from "axios";
-const baseURL = "http://localhost:3000"; // UserService
+import { LocalStorage } from "node-localstorage";
+const localStorage = new LocalStorage('./scratch');
+const baseURLUserService = "http://localhost:3000"; // UserService
+const baseURLOrderService = "http://localhost:3002"; // UserService
 
-export const apiClient = axios.create({
-  baseURL: baseURL,
+export const apiUserClient = axios.create({
+  baseURL: baseURLUserService
 });
-apiClient.interceptors.request.use(
+const access_token = localStorage.getItem('access_token')
+console.log('Authorization Bearer>>>', access_token);
+
+apiUserClient.interceptors.request.use(
   (conf) => {
     conf.headers["Content-Type"] = "application/json";
-    conf.headers["Authorization"] = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJtYVNvIjoiTlZfMSIsImlhdCI6MTc0NTA1NDg0MywiZXhwIjoxNzQ1MTQxMjQzfQ.IqTWKTPLc7doV7nMzWOxapxEBRqRhO9yuFfTk-LoGPA`;
+    conf.headers["Authorization"] = `Bearer ${access_token}`;
+    return conf;
+  },
+  (error) => Promise.reject(error)
+);
+
+export const apiOrderClient = axios.create({
+  baseURL: baseURLOrderService
+});
+
+apiOrderClient.interceptors.request.use(
+  (conf) => {
+    conf.headers["Content-Type"] = "application/json";
+    conf.headers["Authorization"] = `Bearer ${access_token}`;
     return conf;
   },
   (error) => Promise.reject(error)

@@ -1,5 +1,4 @@
-import { KhachHang } from './KhachHang.js';
-import { Phong } from '../../RoomService/model/Phong.js'
+
 export class Order {
     constructor(id, ngayThue, ngayTra, tongtien, khachHangCccd, phongId) {
         this.id = id;

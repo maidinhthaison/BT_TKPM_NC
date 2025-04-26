@@ -1,0 +1,11 @@
+{
+  "hoTen": "Nhân viên 1",
+  "maSo": "NV_1",
+  "dienThoai": "0949134444",
+  "khuVuc": [
+    {
+      "id": "1",
+      "tenKv": "Khu Vực A"
+    }
+  ]
+}

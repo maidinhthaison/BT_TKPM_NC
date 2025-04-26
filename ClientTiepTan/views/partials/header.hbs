@@ -1,17 +1,30 @@
 <style>
   header { background-color: #005eff; color: white; padding: 10px 20px; } nav {
-  display: flex; justify-content: space-around; background-color: #333; padding:
+  display: flex; left: space-around; background-color: #333; padding:
   10px 0; } nav a { color: white; text-decoration: none; padding: 8px 16px; }
   nav a:hover { background-color: #575757; border-radius: 4px; }
+  a {
+  text-decoration: none; /* Remove underline */
+  color: #4CAF50; /* Set text color */
+  font-weight: bold; /* Make it bold */
+  }
+
+  a:hover {
+    color: #45a049; /* Change color when hover */
+    text-decoration: underline; /* Add underline on hover */
+  }
 </style>
 
 <header>
   <h1>Đồ Án Quản lý khách sạn 2</h1>
-  <p>Mai Đình Thái Sơn - 20810229</p>
-  <h3>Ứng dụng cho tiếp tân</h3>
+  <h3>Ứng dụng cho tiếp tân
+    {{#if user}}
+      Xin chào: {{user.hoTen}} <a href="/logout">Đăng xuất</a>
+    {{/if}}
+  </h3>
 </header>
 
 <nav>
   <a href="/">Trang chủ</a>
-  <a href="/login">Đăng nhập</a>
+  {{!-- <a href="/login">Đăng nhập</a> --}}
 </nav>

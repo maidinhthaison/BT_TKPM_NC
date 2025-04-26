@@ -3,9 +3,11 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import { config } from "./config.js";
 import { engine } from "express-handlebars";
-import { apiClient } from "./client.js";
+import { apiUserClient, apiOrderClient } from "./client.js";
 import { endPoint } from "./endPoint.js";
 import { HTTP_CODE, MESSAGE } from "./constant.js";
+import { LocalStorage } from "node-localstorage";
+const localStorage = new LocalStorage("./scratch");
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -28,23 +30,28 @@ app.engine(
 app.set("view engine", ".hbs");
 app.set("views", "./views");
 
-// Quản lý phiếu thuê phòng
-
 app.get("/", async (req, res) => {
   try {
-    // const response = await apiClient.get(endPoint.getAllRoomsEndPoint);
-    // if (response.data.status == 'OK') {
-    //    res.render("main", {
-    //     layout: "index",
-    //     listPhong: response.data.listPhong,
-    //     status: response.data.status
-    //   });
-    // }else {
-    //     res.status(400).send("Lỗi 400 lấy dữ liệu thất bại");
-    // }
-    res.render("main", {
-            layout: "index"
-          });
+    const access_token = localStorage.getItem("access_token");
+    if (access_token === undefined || access_token === null) {
+      res.redirect("/login");
+    } else {
+      console.log("Call API get order detail");
+      const response = await apiOrderClient.get(endPoint.orderDetailEndPoint);
+      const data = response.data
+      const status = data.status;
+      const user = localStorage.getItem('user');
+      if (status == HTTP_CODE[200].code) {
+        res.render("main", {
+          layout: "index",
+          user: JSON.parse(user),
+          orderDetails: data.orderDetails,
+          status: status,
+        });
+      } else {
+        res.status(HTTP_CODE[400].code).send(MESSAGE.GET_DATA_FAIL);
+      }
+    }
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -59,36 +66,34 @@ app.post("/login", async (req, res) => {
     const params = {
       maSo: req.body.edt_maso,
       matKhau: req.body.edt_mk,
-    } 
-    const response = await apiClient.post(endPoint.loginEndPoint, {params});
-  
-    console.log(`Login Response>>>: ${JSON.stringify(response.data, null, 2)}`);
-    if (response.data.status == HTTP_CODE[200].code) {
-      if (response.data.user) {
-        res.render("login", {
-          layout: "loginLayout",
-          user: response.data.user,
+    };
+    const response = await apiUserClient.post(endPoint.loginEndPoint, {
+      params,
+    });
+    const data = response.data
+    const status = data.status;
+    const user = data.data.user;
+    const accessToken = data.data.accessToken;
+    localStorage.setItem("access_token", accessToken);
+    localStorage.setItem("user", JSON.stringify(user, null, 2));
+    if (status == HTTP_CODE[200].code) {
+      if (accessToken) {
+        res.render("main", {
+          layout: "index",
+          user: user,
           message: MESSAGE.LOGIN_SUCCESS,
-          status: response.data.status,
+          status: status,
         });
-      }else{
+      } else {
         res.render("login", {
           layout: "loginLayout",
-          user: {},
-          message: MESSAGE.LOGIN_FAIL,
-          status: response.data.status
         });
       }
-      
-    }else {
-        res.render("login", {
-          layout: "loginLayout",
-          user: {},
-          message: MESSAGE.LOGIN_FAIL,
-          status: response.data.status
-        });
+    } else {
+      res.render("login", {
+        layout: "loginLayout",
+      });
     }
-
   } catch (err) {
     console.error(err.message);
     res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);

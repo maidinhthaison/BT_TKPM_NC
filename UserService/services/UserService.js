@@ -38,13 +38,13 @@ export function createNhanVienList() {
   );
 }
 
-export const xuLyDangNhapService = async (maSo, matKhau) => {
+export const xuLyDangNhapService = async (maSo, matKhau, authorization) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log(`maSo: ${maSo}, matKhau: ${matKhau}`);
-
+      console.log(`maSo: ${maSo}, matKhau: ${matKhau}, authorization: ${authorization}`);
+      
       let arrayNhanVien = await createNhanVienList();
-
+  
       // Check if the user exists
       const matchUser = await arrayNhanVien.find((user) => user.maSo === maSo);
       if (matchUser) {
@@ -61,6 +61,8 @@ export const xuLyDangNhapService = async (maSo, matKhau) => {
             message: HTTP_CODE[401].message,
           });
         } else {
+          
+          
           // Generate access token
           const accessToken = generateAcessToken({
             maSo: matchUser.maSo,
@@ -68,13 +70,21 @@ export const xuLyDangNhapService = async (maSo, matKhau) => {
           // Generate refresh token
           const refreshToken = generateRefreshToken({
             maSo: matchUser.maSo,
+            hoTen: matchUser.hoTen
           });
+          //localStorage.setItem('refresh_token', refreshToken)
           resolve({
             status: HTTP_CODE[200].code,
             message: HTTP_CODE[200].message,
             data: {
               accessToken,
               refreshToken,
+              user: {
+                hoTen : matchUser.hoTen,
+                maSo : matchUser.maSo,
+                dienThoai: matchUser.dienThoai,
+                khuVuc : matchUser.khuVuc
+              }
             },
           });
         }
