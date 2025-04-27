@@ -1,6 +1,6 @@
 import fs from "fs";
 import path, { parse } from "path";
-import { Phong } from "../model/Phong.js";
+import { Phong } from "../models/Phong.js";
 
 const pathPhongJson = path.join("Du_Lieu_Phong", "Du_Lieu", "Phong");
 

@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.get("/order/getAll", getAllOrdersController);
 
-router.get("/order/getOrderDetails",authMiddleware, getOrdersDetailsController);
+router.get("/order/getOrderDetails",authMiddleware, getOrdersDetailsController); // thêm middleware để xác thực người dùng nào được sử dụng service này
 
 export default { routes: router };

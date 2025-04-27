@@ -24,5 +24,7 @@ const authMiddleware = (req, res, next) => {
         }
     });
 }
+// mảng này là hard code các mã số nhân viên, quản lý và giám đốc để xác thực chuỗi access_token mà client
+// gửi lên là ai?, chức vụ gì, thay vì sẽ phải có 1 trường là role, isAdmin...trong file json
 const listMaso = ['NV_1', 'NV_2', 'NV_3', 'QL_4', 'QL_5', 'GD_6' ]
 export default authMiddleware
