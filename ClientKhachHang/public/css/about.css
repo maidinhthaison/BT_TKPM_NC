@@ -1,0 +1,39 @@
+.simple-paragraph {
+  font-family: "Arial", sans-serif;
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  margin: 20px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-left: 4px solid #4caf50;
+  border-radius: 5px;
+}
+
+/*Gallery*/
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Spacing between images */
+  padding: 20px;
+  margin-bottom: 100px;
+}
+
+.gallery-item {
+  flex: 1 0 200px; /* Distribute space, minimum width */
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Hide any image overflow */
+  border-radius: 5px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  display: block; /* Remove extra space below inline images */
+  transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05); /* Slight zoom on hover */
+}

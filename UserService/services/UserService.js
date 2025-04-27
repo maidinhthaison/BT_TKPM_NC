@@ -1,5 +1,5 @@
-import { User } from "../model/User.js";
-import { KhachHang } from "../model/KhachHang.js";
+import { User } from "../models/User.js";
+import { KhachHang } from "../models/KhachHang.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import fs from "fs";
