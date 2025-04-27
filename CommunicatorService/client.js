@@ -15,7 +15,9 @@ apiRoomClient.interceptors.request.use(
   },
   (error) => Promise.reject(error)
 );
-
+/**
+ * 
+ */
 export const apiOrderlient = axios.create({
   baseURL: baseURLOrderService,
 });
@@ -26,7 +28,9 @@ apiOrderlient.interceptors.request.use(
   },
   (error) => Promise.reject(error)
 );
-
+/**
+ * 
+ */
 export const apiKhachHangClient = axios.create({
   baseURL: baseURLUserService,
 });

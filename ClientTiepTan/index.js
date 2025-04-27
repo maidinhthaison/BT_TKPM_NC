@@ -53,7 +53,7 @@ app.get("/", async (req, res) => {
       }
     }
   } catch (err) {
-    console.error(err);
+    console.error(err.message);
     res.status(500).send("Server error");
   }
 });
@@ -98,6 +98,31 @@ app.post("/login", async (req, res) => {
     console.error(err.message);
     res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
   }
+});
+
+app.get('/detail', async (req, res) => {
+  const orderId = req.query.id;
+  try {
+    console.log("Call API get order detail by id: ", orderId);
+    const response = await apiOrderClient.get(`${endPoint.orderDetailByIdEndPoint}?oId=${orderId}`);
+    const data = response.data
+    const status = data.status;
+    const user = localStorage.getItem('user');
+    if (status == HTTP_CODE[200].code) {
+      res.render("order_detail", {
+        layout: "orderDetailLayout",
+        user: JSON.parse(user),
+        orderDetail: data.orderDetail,
+        status: status,
+      });
+    } else {
+      res.status(HTTP_CODE[400].code).send(MESSAGE.GET_DATA_FAIL);
+    }      
+  } catch (err) {
+    console.error(err);
+    res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
+  }
+
 });
 
 app.listen(config.port, () =>
