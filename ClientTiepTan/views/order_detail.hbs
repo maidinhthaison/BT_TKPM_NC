@@ -1,0 +1,24 @@
+{{>header}}
+{{#if orderDetail}}
+<div class="form-container">
+    <h2>Chi tiết đơn hàng</h2>
+    <form id="orderDetailForm" method="post" action="/updateOrderDetail">
+      <label>Số ĐT</label>
+      <input type="tel" id="edt_sdt" value="{{orderDetail.khachDatPhong.dienThoai}}" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+
+      <label>Ngày thuê</label>
+      <input type="date" id="edt_ngayThue" value="{{orderDetail.ngayThue}}" required>
+
+      <label>Ngày trả</label>
+      <input type="date" id="edt_ngayTra" value="{{orderDetail.ngayTra}}" required>
+
+      <label>Tổng tiền</label>
+      <input type="text" id="edt_tongTien" value="{{orderDetail.tongtien}}" required>
+
+      <button type="submit" id="updateButton">Cập nhật</button>
+    </form>
+  </div>
+{{/if}}
+  
+
+{{>footer}}
