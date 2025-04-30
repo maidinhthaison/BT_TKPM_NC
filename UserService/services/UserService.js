@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import fs from "fs";
 import path from "path";
 import { config } from "../config.js";
-import { HTTP_CODE } from "../constant.js";
+import { HTTP_CODE, MESSAGE } from "../constant.js";
 const pathNVJson = path.join("Du_Lieu_Khach_San", "Du_Lieu", "Nhan_Vien");
 
 const jsonNhanVienFile = "nhanvien.json";
@@ -38,13 +38,13 @@ export function createNhanVienList() {
   );
 }
 
-export const xuLyDangNhapService = async (maSo, matKhau, authorization) => {
+export const xuLyDangNhapService = async (maSo, matKhau) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log(`maSo: ${maSo}, matKhau: ${matKhau}, authorization: ${authorization}`);
-      
+      console.log(`maSo: ${maSo}, matKhau: ${matKhau}`);
+
       let arrayNhanVien = await createNhanVienList();
-  
+
       // Check if the user exists
       const matchUser = await arrayNhanVien.find((user) => user.maSo === maSo);
       if (matchUser) {
@@ -61,8 +61,6 @@ export const xuLyDangNhapService = async (maSo, matKhau, authorization) => {
             message: HTTP_CODE[401].message,
           });
         } else {
-          
-          
           // Generate access token
           const accessToken = generateAcessToken({
             maSo: matchUser.maSo,
@@ -70,9 +68,9 @@ export const xuLyDangNhapService = async (maSo, matKhau, authorization) => {
           // Generate refresh token
           const refreshToken = generateRefreshToken({
             maSo: matchUser.maSo,
-            hoTen: matchUser.hoTen
+            hoTen: matchUser.hoTen,
           });
-          //localStorage.setItem('refresh_token', refreshToken)
+
           resolve({
             status: HTTP_CODE[200].code,
             message: HTTP_CODE[200].message,
@@ -80,14 +78,53 @@ export const xuLyDangNhapService = async (maSo, matKhau, authorization) => {
               accessToken,
               refreshToken,
               user: {
-                hoTen : matchUser.hoTen,
-                maSo : matchUser.maSo,
+                hoTen: matchUser.hoTen,
+                maSo: matchUser.maSo,
                 dienThoai: matchUser.dienThoai,
-                khuVuc : matchUser.khuVuc
-              }
+                khuVuc: matchUser.khuVuc,
+              },
             },
           });
         }
+      } else {
+        resolve({
+          status: HTTP_CODE[401].code,
+          message: HTTP_CODE[401].message,
+        });
+      }
+    } catch (error) {
+      reject({
+        status: HTTP_CODE[503].code,
+        message: HTTP_CODE[503].message,
+      });
+    }
+  }).catch((e) => console.log(e));
+};
+
+export function createKhachHangList() {
+  const khachHangArray = parseJson(jsonKhachHangFile);
+  return khachHangArray.map(
+    (item) =>
+      new KhachHang(
+        item.cccd,
+        item.hoTen,
+        item.ngaySinh,
+        item.diaChi,
+        item.dienThoai
+      )
+  );
+}
+export const getAllKhachHangService = async () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let arrayKh = await createKhachHangList();
+
+      if (arrayKh) {
+        resolve({
+          status: HTTP_CODE[200].code,
+          message: HTTP_CODE[200].message,
+          khachHang: arrayKh,
+        });
       } else {
         resolve({
           status: HTTP_CODE[401].code,
@@ -117,41 +154,43 @@ const generateRefreshToken = (data) => {
   return access_token;
 };
 
-export function createKhachHangList() {
-  const khachHangArray = parseJson(jsonKhachHangFile);
-  return khachHangArray.map(
-    (item) =>
-      new KhachHang(
-        item.cccd,
-        item.hoTen,
-        item.ngaySinh,
-        item.diaChi,
-        item.dienThoai
-      )
-  );
-}
-export const getAllKhachHangService = async () => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      let arrayKh = await createKhachHangList();
-      
-      if (arrayKh) {
-        resolve({
-          status: HTTP_CODE[200].code,
-          message: HTTP_CODE[200].message,
-          khachHang: arrayKh,
+export const refreshTokenService = async (token) => {
+  try {
+    return await new Promise((resolve, reject) => {
+      try {
+        jwt.verify(token, config.refreshTokenSecret, function (err, user) {
+          if (err) {
+
+            resolve({
+              status: HTTP_CODE[401].code,
+              message: `${HTTP_CODE[401].message} - The user is not authentication`,
+            });
+          } else {
+            if (user) {
+              const newAcessToken = generateAcessToken({ maSo: user.maSo });
+              resolve({
+                status: HTTP_CODE[200].code,
+                message: HTTP_CODE[200].message,
+                access_token: newAcessToken,
+              });
+            } else {
+
+              resolve({
+                status: HTTP_CODE[401].code,
+                message: `${HTTP_CODE[401].message} - The user is not authentication`,
+              });
+            }
+          }
         });
-      } else {
-        resolve({
-          status: HTTP_CODE[401].code,
-          message: HTTP_CODE[401].message,
+      } catch (error) {
+        console.log('4444: ', error);
+        reject({
+          status: HTTP_CODE[503].code,
+          message: HTTP_CODE[503].message,
         });
       }
-    } catch (error) {
-      reject({
-        status: HTTP_CODE[503].code,
-        message: HTTP_CODE[503].message,
-      });
-    }
-  }).catch((e) => console.log(e));
+    });
+  } catch (e) {
+    return console.log(e);
+  }
 };

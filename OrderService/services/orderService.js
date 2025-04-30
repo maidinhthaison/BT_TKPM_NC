@@ -36,15 +36,13 @@ export const getOrderDetailsService = async () => {
   return new Promise(async (resolve, reject) => {
     try {
       const orders = await getAllOrders();
-
+      
       const rooms = await getAllRooms();
 
       const khachHang = await getAllKhachHang();
 
       const orderDetails = orders.orders.map((order) => {
-        const khachDatPhong = khachHang.khachHang.find(
-          (kh) => kh.cccd === order.khachHangCccd
-        );
+        const khachDatPhong = khachHang.khachHang.find((kh) => kh.cccd === order.khachHangCccd);
 
         const phongDaDat = rooms.listPhong.find((r) => r.id === order.phongId);
 
@@ -52,22 +50,24 @@ export const getOrderDetailsService = async () => {
           return { ...order, khachDatPhong, phongDaDat };
         }
       });
-      //console.log(`orderDetails>>>`, JSON.stringify(detailedOrders, null, 2));
+      
+      console.log(`orderDetails >>> : ${JSON.stringify(orderDetails, null, 2)}`)
 
       resolve({
         status: HTTP_CODE[200].code,
         message: HTTP_CODE[200].message,
-        orderDetails: orderDetails,
+        orderDetails: orderDetails.filter(item => item !== null && item !== undefined),
       });
     } catch (error) {
-      console.log(`getOrderDetailsService error: ${error}`);
-
+      console.log(`getOrderDetailsService 2222: ${error.message}`)
       reject({
-        status: HTTP_CODE[503].code,
-        message: HTTP_CODE[503].message,
+        status: HTTP_CODE[500].code,
+        message: HTTP_CODE[500].message,
       });
     }
-  }).catch((e) => console.log(e));
+  }).catch((error) =>{
+    console.log(`getOrderDetailsService 3333: ${error.message}`);
+  }) 
 };
 
 export const getAllOrdersService = async () => {

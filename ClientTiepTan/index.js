@@ -33,7 +33,8 @@ app.set("views", "./views");
 app.get("/", async (req, res) => {
   try {
     const access_token = localStorage.getItem("access_token");
-    if (access_token === undefined || access_token === null) {
+    
+    if (access_token === null) {
       res.redirect("/login");
     } else {
       console.log("Call API get order detail");
@@ -53,8 +54,8 @@ app.get("/", async (req, res) => {
       }
     }
   } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server error");
+    console.error(`Error: >>> ${err.message}`);
+    res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
   }
 });
 app.get("/login", (req, res) => {
@@ -63,13 +64,12 @@ app.get("/login", (req, res) => {
 
 app.post("/login", async (req, res) => {
   try {
-    const params = {
+   
+    const response = await apiUserClient.post(endPoint.loginEndPoint, {
       maSo: req.body.edt_maso,
       matKhau: req.body.edt_mk,
-    };
-    const response = await apiUserClient.post(endPoint.loginEndPoint, {
-      params,
     });
+    
     const data = response.data
     const status = data.status;
     const user = data.data.user;
@@ -78,23 +78,28 @@ app.post("/login", async (req, res) => {
     localStorage.setItem("user", JSON.stringify(user, null, 2));
     if (status == HTTP_CODE[200].code) {
       if (accessToken) {
+        console.log('1111');
         res.render("main", {
           layout: "index",
           user: user,
           message: MESSAGE.LOGIN_SUCCESS,
           status: status,
         });
+       res.redirect('/');
       } else {
+        console.log('2222');
         res.render("login", {
           layout: "loginLayout",
         });
       }
     } else {
+      console.log('3333');
       res.render("login", {
         layout: "loginLayout",
       });
     }
   } catch (err) {
+    console.log('4444');
     console.error(err.message);
     res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
   }
