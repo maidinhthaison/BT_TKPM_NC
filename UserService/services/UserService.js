@@ -11,6 +11,7 @@ const pathNVJson = path.join("Du_Lieu_Khach_San", "Du_Lieu", "Nhan_Vien");
 const jsonNhanVienFile = "nhanvien.json";
 
 const jsonKhachHangFile = "khachhang.json";
+//http://localhost:3000/Du_Lieu/Nhan_Vien/khachhang.json
 
 const parseJson = (jsonFileName) => {
   let fileContent = fs.readFileSync(`./${pathNVJson}/${jsonFileName}`, "utf8");

@@ -26,7 +26,6 @@ app.engine(
     partialsDir: __dirname + "/views/partials/",
   })
 );
-
 app.set("view engine", ".hbs");
 app.set("views", "./views");
 
@@ -47,13 +46,14 @@ app.get("/", async (req, res) => {
           layout: "index",
           user: JSON.parse(user),
           orderDetails: data.orderDetails,
-          status: status,
+          status: status
         });
       } else {
         res.status(HTTP_CODE[400].code).send(MESSAGE.GET_DATA_FAIL);
       }
     }
   } catch (err) {
+    
     console.error(`Error: >>> ${err.message}`);
     res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
   }
@@ -112,13 +112,14 @@ app.get('/detail', async (req, res) => {
     const response = await apiOrderClient.get(`${endPoint.orderDetailByIdEndPoint}?oId=${orderId}`);
     const data = response.data
     const status = data.status;
+    console.log('res>>> detail', JSON.stringify(data.orderDetail, null, 2));
     const user = localStorage.getItem('user');
     if (status == HTTP_CODE[200].code) {
       res.render("order_detail", {
         layout: "orderDetailLayout",
         user: JSON.parse(user),
         orderDetail: data.orderDetail,
-        status: status,
+        status: status
       });
     } else {
       res.status(HTTP_CODE[400].code).send(MESSAGE.GET_DATA_FAIL);
@@ -129,7 +130,83 @@ app.get('/detail', async (req, res) => {
   }
 
 });
-
+/**
+ * Search Order
+ */
+app.post("/search", async (req, res) => {
+  try {
+    const access_token = localStorage.getItem("access_token");
+    
+    if (access_token === null) {
+      res.redirect("/login");
+    } else {
+      console.log("Call Search order API");
+  
+      const response = await apiOrderClient.post(endPoint.searchOrder, {
+        keyword: req.body.inputSearch
+      });
+      const data = response.data
+      const status = data.status;
+      const user = localStorage.getItem('user');
+      if (status == HTTP_CODE[200].code) {
+        res.render("main", {
+          layout: "index",
+          user: JSON.parse(user),
+          orderDetails: data.orderDetails,
+          status: status,
+        });
+        
+      } else {
+        res.status(HTTP_CODE[400].code).send(MESSAGE.GET_DATA_FAIL);
+      }
+    }
+  } catch (err) {
+    console.error(`Error: >>> ${err.message}`);
+    res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
+  }
+});
+/**
+ * Update Order By Id
+ */
+app.post("/updateOrderDetail", async (req, res) => {
+  try {
+    const access_token = localStorage.getItem("access_token");
+    
+    if (access_token === null) {
+      res.redirect("/login");
+    } else {
+      console.log("Call Update order API");
+      const params = {
+        orderId : req.body.edt_orderId,
+        tongtien : req.body.edt_tongTien,
+        ngayThue : req.body.edt_ngayThue,
+        ngayTra : req.body.edt_ngayTra
+      }
+      console.log(JSON.stringify(params, null, 2));
+      
+      const response = await apiOrderClient.post(endPoint.updateOrderById, params);
+     
+      const data = response.data
+      const status = data.status;
+      const user = localStorage.getItem('user');
+      if (status == HTTP_CODE[200].code) {
+        res.render("order_detail", {
+          layout: "orderDetailLayout",
+          user: JSON.parse(user),
+          orderDetail: data.orderDetail,
+          status: status,
+          toastMessage: "Cập nhật đơn hàng thành công"
+        });
+        
+      } else {
+        res.status(HTTP_CODE[400].code).send(HTTP_CODE[400].message);
+      }
+    }
+  } catch (err) {
+    console.error(`Error: >>> ${err.message}`);
+    res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
+  }
+});
 app.listen(config.port, () =>
   console.log(`Client Tiep Tan is listening on url ${config.url}`)
 );

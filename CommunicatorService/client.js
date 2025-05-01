@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURLUserService = "http://localhost:3000"; // UserService
+export const baseURLUserService = "http://localhost:3000"; // UserService
 const baseURLRoomService = "http://localhost:3001"; // RoomService
 const baseURLOrderService = "http://localhost:3002"; // OrderService
 

@@ -1,9 +1,9 @@
 [
   {
     "id": "ORD_001",
-    "ngayThue": "2023-10-01",
-    "ngayTra": "2023-10-05",
-    "tongtien": 5000000,
+    "ngayThue": "2025-04-29",
+    "ngayTra": "2025-05-01",
+    "tongtien": "490000",
     "khachHangCccd": "123456789012",
     "phongId": "1"
   },
