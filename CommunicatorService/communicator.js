@@ -1,5 +1,5 @@
 import {apiRoomClient, apiOrderlient, apiKhachHangClient} from "./client.js";
-
+import { baseURLUserService } from './client.js'
 export const getAllRooms = async () => {
   const response = await apiRoomClient.get('api/room/getAll');
   return response.data;

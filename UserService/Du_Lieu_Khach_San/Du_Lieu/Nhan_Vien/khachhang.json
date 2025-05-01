@@ -14,13 +14,11 @@
     "dienThoai": "0912345678"
   },
   {
-    "khachHang": {
-      "cccd": "456789123456",
-      "hoTen": "Lê Văn C",
-      "ngaySinh": "1988-03-03",
-      "diaChi": "789 Đường GHI, Quận 3, TP.HCM",
-      "dienThoai": "0923456789"
-    }
+    "cccd": "456789123456",
+    "hoTen": "Lê Văn C",
+    "ngaySinh": "1988-03-03",
+    "diaChi": "789 Đường GHI, Quận 3, TP.HCM",
+    "dienThoai": "0923456789"
   },
   {
     "cccd": "789123456789",

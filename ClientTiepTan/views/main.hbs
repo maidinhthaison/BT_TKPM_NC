@@ -3,7 +3,7 @@
 {{#if orderDetails}}
 <form id="searchForm" action="/search" method="post">
   <div class="search-container">
-    <input type="text" id="inputSearch" name="keyword" placeholder="Tìm kiếm..." />
+    <input type="text" id="inputSearch" name="inputSearch" placeholder="Tìm kiếm..." />
     <button type="submit" id="searchButton">Tìm kiếm</button>
   </div>
 </form>
@@ -36,7 +36,10 @@
   </table>
 </div>  
 {{else}}
-<h1>Chưa đăng nhập</h1>
-<a href="/login">Đăng nhập</a>
+<div style="text-align: center;">
+  <p class="center-text">Lấy danh sách đơn đặt phòng thất bại</p>
+  <a href="/" class="button-link" >Thử lại</a>
+</div>
+
 {{/if}}
 {{>footer}}

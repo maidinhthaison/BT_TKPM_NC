@@ -8,12 +8,16 @@ export const apiUserClient = axios.create({
   baseURL: baseURLUserService
 });
 const access_token = localStorage.getItem('access_token')
-console.log('Authorization Bearer>>>', access_token);
+
 
 apiUserClient.interceptors.request.use(
   (conf) => {
     conf.headers["Content-Type"] = "application/json";
-    conf.headers["Authorization"] = `Bearer ${access_token}`;
+    if(access_token !== null){
+      console.log('Authorization Bearer apiUserClient>>>', access_token);
+      conf.headers["Authorization"] = `Bearer ${access_token}`;
+    }
+    
     return conf;
   },
   (error) => Promise.reject(error)
@@ -26,7 +30,11 @@ export const apiOrderClient = axios.create({
 apiOrderClient.interceptors.request.use(
   (conf) => {
     conf.headers["Content-Type"] = "application/json";
-    conf.headers["Authorization"] = `Bearer ${access_token}`;
+    
+    if(access_token !== null){
+      console.log('Authorization Bearer apiOrderClient>>>', access_token);
+      conf.headers["Authorization"] = `Bearer ${access_token}`;
+    }
     return conf;
   },
   (error) => Promise.reject(error)
