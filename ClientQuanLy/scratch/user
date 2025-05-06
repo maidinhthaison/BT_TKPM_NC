@@ -1,0 +1,19 @@
+{
+  "hoTen": "Quản lý Nguyễn Văn D",
+  "maSo": "QL_5",
+  "dienThoai": "0944132222",
+  "khuVuc": [
+    {
+      "id": "1",
+      "tenKv": "Khu Vực A"
+    },
+    {
+      "id": "2",
+      "tenKv": "Khu Vực B"
+    },
+    {
+      "id": "3",
+      "tenKv": "Khu Vực C"
+    }
+  ]
+}
