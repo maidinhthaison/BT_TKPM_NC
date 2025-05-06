@@ -2,7 +2,7 @@ import axios from "axios";
 import { LocalStorage } from "node-localstorage";
 const localStorage = new LocalStorage('./scratch');
 const baseURLUserService = "http://localhost:3000"; // UserService
-const baseURLOrderService = "http://localhost:3002"; // OrderService
+const baseURLStatisticService = "http://localhost:3003"; // Statistic service
 
 export const apiUserClient = axios.create({
   baseURL: baseURLUserService
@@ -23,11 +23,11 @@ apiUserClient.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-export const apiOrderClient = axios.create({
-  baseURL: baseURLOrderService
+export const apiStatisticClient = axios.create({
+  baseURL: baseURLStatisticService
 });
 
-apiOrderClient.interceptors.request.use(
+apiStatisticClient.interceptors.request.use(
   (conf) => {
     conf.headers["Content-Type"] = "application/json";
     

@@ -1,0 +1,17 @@
+{{>header}}
+<div class="login-box">
+  <h2>Đăng Nhập</h2>
+  <form id="loginForm" action="/login" method="post">
+    <label for="maSo">Mã số NV</label>
+    <input type="text" id="edt_maso" name="edt_maso" placeholder="Nhập mã số nv" value="QL_5" required>
+
+    <label for="matkhau">Mật khẩu</label>
+    <input type="password" id="edt_mk" name="edt_mk" placeholder="Nhập mật khẩu" value="QL_5" required>
+
+    <button type="submit" id="btnLogin">Đăng nhập</button>
+  </form>
+</div>
+{{#if loginToastMessage}}
+  <div id="toast" class="toast">{{loginToastMessage}}</div>
+{{/if}}
+{{>footer}}

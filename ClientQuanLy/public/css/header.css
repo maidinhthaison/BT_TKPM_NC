@@ -1,0 +1,36 @@
+header {
+  background-color: #1f6e2d;
+  color: white;
+  padding: 10px 20px;
+}
+nav {
+  display: flex;
+  left: space-around;
+  background-color: #333;
+  padding: 10px 0;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+}
+nav a:hover {
+  background-color: #575757;
+  border-radius: 4px;
+}
+/* Đăng xuất link */
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db; /* Nice blue color */
+  color: white;
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: 'Arial', sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.button-link:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+}

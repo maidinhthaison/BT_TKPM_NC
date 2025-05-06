@@ -1,0 +1,50 @@
+{{>header}}
+<div class="form-container">
+    <h2>Thống kê thu tháng</h2>
+    <form id="statisticForm" method="post" action="/statistic">
+     
+      <label>Chọn tháng</label>
+      <input type="date" id="edt_month" name="edt_month" placeholder="Chọn tháng"  required>
+
+      <button type="submit" id="statisticButton">Thống kê</button>
+    </form>
+  </div>
+
+{{#if statistic}}
+<div style="display: flex; flex-direction: column; min-height: 100vh;">
+  {{#if summary}}
+    <p class="simple-paragraph">
+        Tháng {{summary.month}} - Tổng thu {{summary.totalByMonth}}
+    </p>
+  {{/if}}
+<table>
+  <thead>
+    <th>Ngày thuê</th>
+    <th>Ngày trả</th>
+    <th>Phòng thuê</th>
+    <th>Tổng tiền</th>
+    <th>Tỷ lệ</th>
+  </thead>
+  {{#each statistic}}
+    <tr>
+      <th colspan="5">{{@key}}</th> 
+    </tr>
+    
+    {{#each this}}
+      
+        <tr>
+          <td>{{ngayThue}}</td>
+          <td>{{ngayTra}}</td>
+          <td>{{phongDaDat.formatTenPhong}}</td>
+          <td>{{tongtien}}</td>
+          <td>{{devide tongtien 1000}}</td>
+        </tr>
+     
+    {{/each}}
+     
+  {{/each}}
+</table>
+</div>  
+
+{{/if}}
+{{>footer}}

@@ -1,0 +1,37 @@
+{
+  "name": "clientquanly",
+  "version": "1.0.0",
+  "description": "Hệ khách quản lý",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maidinhthaison/BT_TKPM_NC.git"
+  },
+  "keywords": [
+    "microservice",
+    "handlebars",
+    "json",
+    "nodejs",
+    "express"
+  ],
+  "author": "20810229@student.hcmus.edu.vn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maidinhthaison/BT_TKPM_NC/issues"
+  },
+  "homepage": "https://github.com/maidinhthaison/BT_TKPM_NC#readme",
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.1",
+    "handlebars-helpers": "^0.10.0",
+    "node-localstorage": "^3.0.5",
+    "nodemon": "^3.1.9"
+  }
+}
