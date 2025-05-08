@@ -28,10 +28,14 @@ app.engine(
   })
 );
 
-Handlebars.registerHelper('devide', function(a, b) {
-  
-  return parseFloat(a) /  parseFloat(b);
+Handlebars.registerHelper('formatCurrency', (amount, locale, currency) => {
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency,
+  }).format(amount);
 });
+
+
 
 app.set("view engine", ".hbs");
 app.set("views", "./views");
