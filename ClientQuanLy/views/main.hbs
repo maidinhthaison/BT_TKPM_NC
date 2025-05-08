@@ -14,20 +14,42 @@
 <div style="display: flex; flex-direction: column; min-height: 100vh;">
   {{#if summary}}
     <p class="simple-paragraph">
-        Tháng {{summary.month}} - Tổng thu {{summary.totalByMonth}}
-    </p>
+      Tháng {{summary.month}} - Tổng thu {{ formatCurrency summary.totalByMonth  'vi-VN' 'VND'}}<br>
+      
+     </p>
+
+    <table class="simple-table">
+        <thead>
+          <tr>
+            <th>Loại phòng</th>
+            <th>Thu</th>
+            <th>Tỷ lệ</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each summary.totalByCate}}
+            <tr>
+              <td>{{type}}</td>
+              <td>{{formatCurrency income 'vi-VN' 'VND'}}</td>
+              <td>{{tyle}} %</td>
+              
+            </tr>
+          {{/each}}
+        </tbody>
+    </table>  
+    
   {{/if}}
-<table>
+  <p class="simple-paragraph">Chi tiết</p>
+<table class="simple-table">
   <thead>
     <th>Ngày thuê</th>
     <th>Ngày trả</th>
     <th>Phòng thuê</th>
-    <th>Tổng tiền</th>
-    <th>Tỷ lệ</th>
+    <th>Tiền thuê</th>
   </thead>
   {{#each statistic}}
     <tr>
-      <th colspan="5">{{@key}}</th> 
+      <th colspan="4">{{@key}}</th> 
     </tr>
     
     {{#each this}}
@@ -36,8 +58,7 @@
           <td>{{ngayThue}}</td>
           <td>{{ngayTra}}</td>
           <td>{{phongDaDat.formatTenPhong}}</td>
-          <td>{{tongtien}}</td>
-          <td>{{devide tongtien 1000}}</td>
+          <td>{{formatCurrency tongtien 'vi-VN' 'VND'}}</td>
         </tr>
      
     {{/each}}

@@ -76,3 +76,35 @@ form button:hover {
   border-radius: 5px;
   
 }
+
+/** statistic table **/
+.simple-table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.simple-table th,
+.simple-table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.simple-table th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.simple-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.simple-table tr:hover {
+  background-color: #e0f7fa;
+}
+
+
+

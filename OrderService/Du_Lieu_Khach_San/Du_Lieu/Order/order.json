@@ -3,7 +3,7 @@
     "id": "ORD_001",
     "ngayThue": "2025-04-30",
     "ngayTra": "2025-05-05",
-    "tongtien": "590000",
+    "tongtien": 500000,
     "khachHangCccd": "123456789012",
     "phongId": "1"
   },
@@ -11,7 +11,7 @@
     "id": "ORD_002",
     "ngayThue": "2025-01-03",
     "ngayTra": "2025-01-07",
-    "tongtien": 7000000,
+    "tongtien": 700000,
     "khachHangCccd": "098765432109",
     "phongId": "2"
   },
@@ -19,7 +19,7 @@
     "id": "ORD_003",
     "ngayThue": "2025-03-10",
     "ngayTra": "2025-03-15",
-    "tongtien": 10000000,
+    "tongtien": 300000,
     "khachHangCccd": "456789123456",
     "phongId": "3"
   },
@@ -27,7 +27,7 @@
     "id": "ORD_004",
     "ngayThue": "2025-01-12",
     "ngayTra": "2025-01-14",
-    "tongtien": 3000000,
+    "tongtien": 400000,
     "khachHangCccd": "789123456789",
     "phongId": "4"
   },
@@ -35,7 +35,7 @@
     "id": "ORD_005",
     "ngayThue": "2025-04-20",
     "ngayTra": "2025-04-25",
-    "tongtien": 8000000,
+    "tongtien": 800000,
     "khachHangCccd": "321654987321",
     "phongId": "5"
   },
@@ -43,7 +43,7 @@
     "id": "ORD_006",
     "ngayThue": "2025-03-22",
     "ngayTra": "2025-03-28",
-    "tongtien": 6000000,
+    "tongtien": 600000,
     "khachHangCccd": "654321789654",
     "phongId": "6"
   },
@@ -51,7 +51,7 @@
     "id": "ORD_007",
     "ngayThue": "2025-01-25",
     "ngayTra": "2025-01-30",
-    "tongtien": 9000000,
+    "tongtien": 900000,
     "khachHangCccd": "789654123789",
     "phongId": "7"
   },
@@ -59,7 +59,7 @@
     "id": "ORD_008",
     "ngayThue": "2025-04-28",
     "ngayTra": "2025-04-02",
-    "tongtien": 11000000,
+    "tongtien": 400000,
     "khachHangCccd": "852963741852",
     "phongId": "8"
   },
@@ -67,7 +67,7 @@
     "id": "ORD_009",
     "ngayThue": "2025-03-01",
     "ngayTra": "2025-03-05",
-    "tongtien": 12000000,
+    "tongtien": 700000,
     "khachHangCccd": "963258741963",
     "phongId": "9"
   },
@@ -75,7 +75,7 @@
     "id": "ORD_010",
     "ngayThue": "2025-02-05",
     "ngayTra": "2025-02-10",
-    "tongtien": 13000000,
+    "tongtien": 200000,
     "khachHangCccd": "147258369147",
     "phongId": "10"
   }

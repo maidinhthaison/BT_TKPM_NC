@@ -33,11 +33,14 @@ export const getStatisticByMonthService = async (month) => {
 
       const result = [];
       let totalIncome = 0;
+      let totalByMonth = 0;
       removeNull.forEach((element) => {
+       
         totalIncome += parseFloat(element.tongtien);
         const month = getMonthFromString(element.ngayThue);
 
         if (month === monthNumber) {
+          totalByMonth += parseFloat(element.tongtien);
           result.push(element);
         }
       });
@@ -48,32 +51,30 @@ export const getStatisticByMonthService = async (month) => {
         acc[key].push(item);
         return acc;
       }, {});
-
-      let totalByMonth = 0;
-      let totalByCate = {};
       
+      
+      let totalByCate = [];
+     
       for (const key in grouped) {
-        
+  
         let item = grouped[key];
-        console.log(key);
-        
+        let totalIncomeByCate = 0;
         item.forEach((element) => {
-          totalByMonth += parseFloat(element.tongtien);
+          totalIncomeByCate += parseFloat(element.tongtien);
+          
         });
-
-        totalByCate[key] = totalByMonth;
+       
+        totalByCate.push({
+          'type': key,
+          'income' : totalIncomeByCate,
+          'tyle' : parseFloat(((totalIncomeByCate / totalByMonth) * 100).toFixed(2))
+        })
       }
-      // const moreItem = {
-      //   subTotal: subTotal,
-      //   total: totalIncome,
-      // };
-      //const array = { ...grouped, moreItem };
-      //console.log("grouped>>>", JSON.stringify(array, null, 2));
       const summary = {
         month: monthNumber,
         totalByMonth: totalByMonth,
         totalIncome: totalIncome,
-        totalByCate: totalByCate
+        totalByCate:  totalByCate
       };
 
       resolve({
