@@ -1,0 +1,75 @@
+{{>header}}
+<div class="form-container">
+    <h2>Thống kê thu năm</h2>
+    <form id="statisticForm" method="post" action="/statistic">
+     
+      <label>Chọn thời gian</label>
+      <input type="date" id="edt_year" name="edt_year"  required>
+
+      <button type="submit" id="statisticButton">Thống kê</button>
+    </form>
+  </div>
+
+{{#if statistic}}
+<div style="display: flex; flex-direction: column; min-height: 100vh;">
+  {{#if summary}}
+    <p class="simple-paragraph">
+      Tháng {{summary.date.month}}/{{summary.date.year}} - Tổng thu {{ formatCurrency summary.totalByMonth  'vi-VN' 'VND'}}<br>
+      
+     </p>
+
+    <table class="simple-table">
+        <thead>
+          <tr>
+            <th>Loại phòng</th>
+            <th>Thu</th>
+            <th>Tỷ lệ</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each summary.totalByCate}}
+            <tr>
+              <td>{{type}}</td>
+              <td>{{formatCurrency income 'vi-VN' 'VND'}}</td>
+              <td>{{tyle}} %</td>
+              
+            </tr>
+          {{/each}}
+        </tbody>
+    </table>  
+    
+  {{/if}}
+  <p class="simple-paragraph">Chi tiết</p>
+<table class="simple-table">
+  <thead>
+    <th>Ngày thuê</th>
+    <th>Ngày trả</th>
+    <th>Khách thuê</th>
+    <th>Phòng thuê</th>
+    <th>Tiền thuê</th>
+  </thead>
+  {{#each statistic}}
+    <tr>
+      <th colspan="5">{{@key}}</th> 
+    </tr>
+    
+    {{#each this}}
+      
+        <tr>
+          <td>{{ngayThue}}</td>
+          <td>{{ngayTra}}</td>
+          <td>
+            Tên: {{khachDatPhong.hoTen}} <br>Sdt: {{khachDatPhong.dienThoai}}  
+          </td>
+          <td>{{phongDaDat.formatTenPhong}}<br>Giá: {{phongDaDat.formatGiaPhong}}</td>
+          <td>{{formatCurrency tongtien 'vi-VN' 'VND'}}</td>
+        </tr>
+     
+    {{/each}}
+     
+  {{/each}}
+</table>
+</div>  
+
+{{/if}}
+{{>footer}}
