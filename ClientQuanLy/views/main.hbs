@@ -14,7 +14,7 @@
 <div style="display: flex; flex-direction: column; min-height: 100vh;">
   {{#if summary}}
     <p class="simple-paragraph">
-      Tháng {{summary.month}} - Tổng thu {{ formatCurrency summary.totalByMonth  'vi-VN' 'VND'}}<br>
+      Tháng {{summary.date.month}}/{{summary.date.year}} - Tổng thu {{ formatCurrency summary.totalByMonth  'vi-VN' 'VND'}}<br>
       
      </p>
 
@@ -44,12 +44,13 @@
   <thead>
     <th>Ngày thuê</th>
     <th>Ngày trả</th>
+    <th>Khách thuê</th>
     <th>Phòng thuê</th>
     <th>Tiền thuê</th>
   </thead>
   {{#each statistic}}
     <tr>
-      <th colspan="4">{{@key}}</th> 
+      <th colspan="5">{{@key}}</th> 
     </tr>
     
     {{#each this}}
@@ -57,7 +58,10 @@
         <tr>
           <td>{{ngayThue}}</td>
           <td>{{ngayTra}}</td>
-          <td>{{phongDaDat.formatTenPhong}}</td>
+          <td>
+            Tên: {{khachDatPhong.hoTen}} <br>Sdt: {{khachDatPhong.dienThoai}}  
+          </td>
+          <td>{{phongDaDat.formatTenPhong}}<br>Giá: {{phongDaDat.formatGiaPhong}}</td>
           <td>{{formatCurrency tongtien 'vi-VN' 'VND'}}</td>
         </tr>
      

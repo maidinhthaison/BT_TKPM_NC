@@ -5,6 +5,8 @@ import { getStatisticByMonthService} from "../services/statisticService.js";
  export const getStatisticByMonthController = async (req, res) => {
    const monthString = req.body.month;
    const response = await getStatisticByMonthService(monthString);
+   console.log('res>>', JSON.stringify(response, null, 2));
+   
    if (response.status === HTTP_CODE[200].code) {
      return res.status(HTTP_CODE[200].code).send(response);
    } else {

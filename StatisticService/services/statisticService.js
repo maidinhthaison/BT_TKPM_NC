@@ -4,8 +4,9 @@ import {
   getAllOrders,
   getAllRooms,
 } from "../../CommunicatorService/communicator.js";
+import { getMonthYearFromString } from "../utils.js";
 
-export const getStatisticByMonthService = async (month) => {
+export const getStatisticByMonthService = async (dateString) => {
   return new Promise(async (resolve, reject) => {
     try {
       const orders = await getAllOrders();
@@ -25,21 +26,16 @@ export const getStatisticByMonthService = async (month) => {
           return { ...order, khachDatPhong, phongDaDat };
         }
       });
-      const removeNull = orderDetails.filter(
-        (item) => item !== null && item !== undefined
-      );
 
-      const monthNumber = getMonthFromString(month);
+      const dateStr = getMonthYearFromString(dateString);
 
       const result = [];
       let totalIncome = 0;
       let totalByMonth = 0;
-      removeNull.forEach((element) => {
-       
+      orderDetails.forEach((element) => {
         totalIncome += parseFloat(element.tongtien);
-        const month = getMonthFromString(element.ngayThue);
-
-        if (month === monthNumber) {
+        const date = getMonthYearFromString(element.ngayThue);
+        if (date.year === dateStr.year && date.month === dateStr.month) {
           totalByMonth += parseFloat(element.tongtien);
           result.push(element);
         }
@@ -51,30 +47,29 @@ export const getStatisticByMonthService = async (month) => {
         acc[key].push(item);
         return acc;
       }, {});
-      
-      
+
       let totalByCate = [];
-     
+
       for (const key in grouped) {
-  
         let item = grouped[key];
         let totalIncomeByCate = 0;
         item.forEach((element) => {
           totalIncomeByCate += parseFloat(element.tongtien);
-          
         });
-       
+
         totalByCate.push({
-          'type': key,
-          'income' : totalIncomeByCate,
-          'tyle' : parseFloat(((totalIncomeByCate / totalByMonth) * 100).toFixed(2))
-        })
+          type: key,
+          income: totalIncomeByCate,
+          tyle: parseFloat(
+            ((totalIncomeByCate / totalByMonth) * 100).toFixed(2)
+          ),
+        });
       }
       const summary = {
-        month: monthNumber,
+        date: dateStr,
         totalByMonth: totalByMonth,
         totalIncome: totalIncome,
-        totalByCate:  totalByCate
+        totalByCate: totalByCate,
       };
 
       resolve({
@@ -95,9 +90,13 @@ export const getStatisticByMonthService = async (month) => {
   });
 };
 
-function getMonthFromString(dateString) {
-  const date = new Date(dateString);
-  const monthIndex = date.getMonth();
-  const monthNumber = monthIndex + 1;
-  return monthNumber;
-}
+// function getMonthYearFromString(dateString) {
+//   const date = new Date(dateString);
+//   const monthIndex = date.getMonth();
+//   const year = date.getFullYear();
+//   const monthNumber = monthIndex + 1;
+//   return {
+//     month: monthNumber,
+//     year: year,
+//   };
+// }

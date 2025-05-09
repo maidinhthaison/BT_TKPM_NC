@@ -22,9 +22,9 @@ const writeJsonToFile = async (arrayObject, pathFile) => {
   try {
     fs.writeFileSync(pathFile, jsonArray, "utf8", (err) => {
       if (err) {
-        console.error("Error writing to file", err);
+        console.error(`Lỗi ghi file ${jsonFile} - ${err}`);
       } else {
-        console.log("Data written to file");
+        console.error(`Ghi file ${jsonFile} thành công`);
       }
     });
   } catch (err) {
