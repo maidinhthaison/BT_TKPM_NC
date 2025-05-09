@@ -2,17 +2,17 @@
   {
     "id": "ORD_001",
     "ngayThue": "2025-04-30",
-    "ngayTra": "2025-05-05",
+    "ngayTra": "2025-05-03",
     "tongtien": 500000,
     "khachHangCccd": "123456789012",
     "phongId": "1"
   },
   {
     "id": "ORD_002",
-    "ngayThue": "2025-01-03",
-    "ngayTra": "2025-01-07",
+    "ngayThue": "2025-05-03",
+    "ngayTra": "2025-05-07",
     "tongtien": 700000,
-    "khachHangCccd": "098765432109",
+    "khachHangCccd": "987654321098",
     "phongId": "2"
   },
   {
@@ -73,10 +73,18 @@
   },
   {
     "id": "ORD_010",
-    "ngayThue": "2025-02-05",
-    "ngayTra": "2025-02-10",
+    "ngayThue": "2025-05-08",
+    "ngayTra": "2025-05-10",
     "tongtien": 200000,
     "khachHangCccd": "147258369147",
     "phongId": "10"
+  },
+  {
+    "id": "ORD_011",
+    "ngayThue": "2025-02-10",
+    "ngayTra": "2025-02-15",
+    "tongtien": 350000,
+    "khachHangCccd": "987654321098",
+    "phongId": "3"
   }
 ]

@@ -51,6 +51,8 @@ app.get("/", async (req, res) => {
       } else {
         res.status(HTTP_CODE[400].code).send(MESSAGE.GET_DATA_FAIL);
       }
+      
+
     }
   } catch (err) {
     
@@ -58,9 +60,7 @@ app.get("/", async (req, res) => {
     res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
   }
 });
-app.get("/login", (req, res) => {
-  res.render("login", { layout: "loginLayout" });
-});
+
 
 app.post("/login", async (req, res) => {
   try {
@@ -207,6 +207,10 @@ app.post("/updateOrderDetail", async (req, res) => {
     res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
   }
 });
+app.get("/login", (req, res) => {
+  res.render("login", { layout: "loginLayout" });
+});
+
 app.listen(config.port, () =>
   console.log(`Client Tiep Tan is listening on url ${config.url}`)
 );
