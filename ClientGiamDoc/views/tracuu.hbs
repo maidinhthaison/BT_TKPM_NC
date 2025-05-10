@@ -1,0 +1,38 @@
+{{>header}}
+<form id="searchForm" action="/search" method="post">
+  <div class="search-container">
+    <input type="text" id="inputSearch" name="inputSearch" placeholder="Tìm kiếm..." />
+    <button type="submit" id="searchButton">Tìm kiếm</button>
+  </div>
+</form>
+{{#if orderDetails}}
+ <div style="display: flex; flex-direction: column; min-height: 100vh;">
+      <table>
+        <thead>
+          <tr>
+            <th>Mã Order</th>
+            <th>Ngày thuê</th>
+            <th>Ngày trả</th>
+            <th>Tổng tiền</th>
+            <th>Khách hàng</th>
+            <th>Phòng đặt</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          {{#each orderDetails}}
+            <tr>
+              <td>{{id}}</td>
+              <td>{{ngayThue}}</td>
+              <td>{{ngayTra}}</td>
+              <td>{{formatCurrency tongtien 'vi-VN' 'VND'}}</td>
+              <td>Tên: {{khachDatPhong.hoTen}}<br>SDT: {{khachDatPhong.dienThoai}}</td>
+              <td>{{phongDaDat.tenPhong}}<br>{{phongDaDat.loaiPhong.tenLoaiPhong}}</td>
+            </tr>
+          {{/each}} 
+        </tbody>
+      </table>
+  </div> 
+
+{{/if}}
+{{>footer}}
