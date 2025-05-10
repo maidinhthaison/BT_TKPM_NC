@@ -1,5 +1,8 @@
 export const endPoint = {
     loginEndPoint: "/api/user/login",
-    getStatisticByYear : "/api/statistic/getStatisticByYear"
+    getStatisticByMonth : "/api/statistic/getStatisticByMonth",
+    orderDetailEndPoint : "/api/order/getOrderDetails",
+    getStatisticByYear: "/api/statistic/getStatisticByYear",
+    searchOrder : "/api/order/searchOrder"
   };
   

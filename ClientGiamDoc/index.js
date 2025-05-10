@@ -4,7 +4,7 @@ import { dirname } from "path";
 import { config } from "./config.js";
 import Handlebars from 'handlebars';
 import { engine } from "express-handlebars";
-import { apiUserClient, apiStatisticClient } from "./client.js";
+import { apiUserClient, apiStatisticClient, apiOrderClient } from "./client.js";
 import { endPoint } from "./endPoint.js";
 import { HTTP_CODE, MESSAGE } from "./constant.js";
 import { LocalStorage } from "node-localstorage";
@@ -143,9 +143,51 @@ app.post("/statistic", async (req, res) => {
   }
 });
 
+/**
+ * Search Order
+ */
+
+app.post("/search", async (req, res) => {
+  try {
+    const access_token = localStorage.getItem("access_token");
+    
+    if (access_token === null) {
+      res.redirect("/login");
+    } else {
+      console.log("Call Search order API");
+  
+      const response = await apiOrderClient.post(endPoint.searchOrder, {
+        keyword: req.body.inputSearch
+      });
+      const data = response.data
+      const status = data.status;
+      const user = localStorage.getItem('user');
+     
+      if (status == HTTP_CODE[200].code) {
+        res.render("tracuu", {
+          layout: "traCuuLayout",
+          user: JSON.parse(user),
+          orderDetails: data.orderDetails,
+          status: status
+        });
+        
+      } else {
+        res.status(HTTP_CODE[400].code).send(MESSAGE.GET_DATA_FAIL);
+      }
+    }
+  } catch (err) {
+    console.error(`Error: >>> ${err.message}`);
+    res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
+  }
+});
+
 app.get("/login", (req, res) => {
     res.render("login", { layout: "loginLayout" });
-  });
+});
+
+app.get("/tracuu", (req, res) => {
+  res.render("tracuu", { layout: "tracuuLayout" });
+});
 
 app.listen(config.port, () =>
   console.log(`Client Quản Lý is listening on url ${config.url}`)
