@@ -300,16 +300,16 @@
     "tenPhong": "Phòng 501",
     "trangThai": "0",
     "loaiPhong": {
-      "id": "LP2",
-      "tenLoaiPhong": "Bình dân",
-      "dongiaPhong": "250000",
-      "tienNghi": "Máy quạt, Wifi",
-      "khachToiDa": "3",
+      "id": "LP3",
+      "tenLoaiPhong": "Phổ thông",
+      "dongiaPhong": "100000",
+      "tienNghi": "Máy quạt",
+      "khachToiDa": "1",
       "cauHinh": {
-        "id": "CH2",
-        "khachToiDa": "3",
-        "dongiaPhong": "250000",
-        "ngayCapNhat": "2025-02-02"
+        "id": "CH3",
+        "khachToiDa": "1",
+        "dongiaPhong": "100000",
+        "ngayCapNhat": "2025-04-02"
       }
     },
     "khuVuc": {
@@ -333,16 +333,16 @@
     "tenPhong": "Phòng 502",
     "trangThai": "1",
     "loaiPhong": {
-      "id": "LP2",
-      "tenLoaiPhong": "Bình dân",
-      "dongiaPhong": "250000",
-      "tienNghi": "Máy quạt, Wifi",
-      "khachToiDa": "3",
+      "id": "LP3",
+      "tenLoaiPhong": "Phổ thông",
+      "dongiaPhong": "100000",
+      "tienNghi": "Máy quạt",
+      "khachToiDa": "1",
       "cauHinh": {
-        "id": "CH2",
-        "khachToiDa": "3",
-        "dongiaPhong": "250000",
-        "ngayCapNhat": "2025-02-02"
+        "id": "CH3",
+        "khachToiDa": "1",
+        "dongiaPhong": "100000",
+        "ngayCapNhat": "2025-04-02"
       }
     },
     "khuVuc": {

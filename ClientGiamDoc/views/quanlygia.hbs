@@ -1,0 +1,27 @@
+
+<div class="form-container">
+    <h2>Cấu hình</h2>
+    <form id="configForm" method="post" action="/capNhatCauHinh">
+     
+      <label for="cbLoaiPhong"><h4>Chọn loại phòng</h4></label>
+      {{#if arrayLoaiPhong}}
+        <select id="cbLoaiPhong" name="cbLoaiPhong" class="combobox">
+          {{#each arrayLoaiPhong}}
+            <option value={{id}}>{{tenLoaiPhong}}</option>
+          {{/each}}
+        </select>
+        <input type="hidden" id="loaiPhongId" name="loaiPhongId">
+        
+        {{#findById arrayLoaiPhong 'LP1'}}
+          <label>Đơn giá phòng</label>
+          <input type="text" id="dongiaPhong" name="dongiaPhong" value="{{cauHinh.dongiaPhong}}" required>
+        {{else}}
+          <p>Not found</p>
+        {{/findById}}
+      {{/if}}
+      <br><br>
+
+      <button type="submit" id="capNhatGiaButton">Cập nhật</button>
+    </form>
+</div> 
+

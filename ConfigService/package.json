@@ -1,0 +1,39 @@
+{
+  "name": "configservice",
+  "version": "1.0.0",
+  "description": "Dịch sụ để config cấu hình như giá phòng...",
+  "main": "index.js",
+  "scripts": {
+    "test": "nodemon index.js",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maidinhthaison/BT_TKPM_NC.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "microservice",
+    "handlebars"
+  ],
+  "author": "20810229@student.hcmus.edu.vn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maidinhthaison/BT_TKPM_NC/issues"
+  },
+  "homepage": "https://github.com/maidinhthaison/BT_TKPM_NC#readme",
+  "type": "module",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "portfinder": "^1.0.32"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

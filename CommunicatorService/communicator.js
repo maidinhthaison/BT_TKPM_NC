@@ -12,3 +12,8 @@ export const getAllKhachHang = async () => {
   const response = await apiKhachHangClient.get('api/user/kh/getAll');
   return response.data;
 }
+
+export const getAllLoaiPhong = async () => {
+  const response = await apiRoomClient.get('api/room/getAllLoaiPhong');
+  return response.data;
+}

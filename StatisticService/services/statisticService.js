@@ -32,6 +32,7 @@ export const getStatisticByMonthService = async (dateString) => {
       const result = [];
       let totalIncome = 0;
       let totalByMonth = 0;
+      
       orderDetails.forEach((element) => {
         totalIncome += parseFloat(element.tongtien);
         const date = getMonthYearFromString(element.ngayThue);
@@ -115,18 +116,19 @@ export const getStatisticByYearService = async (dateString) => {
 
       const result = [];
       let totalIncome = 0;
-      let totalByMonth = 0;
+      let totalByYear = 0;
       orderDetails.forEach((element) => {
         totalIncome += parseFloat(element.tongtien);
         const date = getMonthYearFromString(element.ngayThue);
-        if (date.year === dateStr.year && date.month === dateStr.month) {
-          totalByMonth += parseFloat(element.tongtien);
+        if (date.year === dateStr.year) {
+          totalByYear += parseFloat(element.tongtien);
           result.push(element);
         }
       });
 
       const grouped = result.reduce((acc, item) => {
-        const key = item.phongDaDat.loaiPhong.tenLoaiPhong;
+        const date = getMonthYearFromString(item.ngayThue);
+        const key = date.month;
         if (!acc[key]) acc[key] = [];
         acc[key].push(item);
         return acc;
@@ -145,13 +147,13 @@ export const getStatisticByYearService = async (dateString) => {
           type: key,
           income: totalIncomeByCate,
           tyle: parseFloat(
-            ((totalIncomeByCate / totalByMonth) * 100).toFixed(2)
+            ((totalIncomeByCate / totalByYear) * 100).toFixed(2)
           ),
         });
       }
       const summary = {
         date: dateStr,
-        totalByMonth: totalByMonth,
+        totalByYear: totalByYear,
         totalIncome: totalIncome,
         totalByCate: totalByCate,
       };
@@ -163,13 +165,13 @@ export const getStatisticByYearService = async (dateString) => {
         summary: summary,
       });
     } catch (error) {
-      console.log(`getStatisticByMonthService 2222: ${error.message}`);
+      console.log(`getStatisticByYearService 2222: ${error.message}`);
       reject({
         status: HTTP_CODE[500].code,
         message: HTTP_CODE[500].message,
       });
     }
   }).catch((error) => {
-    console.log(`getStatisticByMonthService 3333: ${error.message}`);
+    console.log(`getStatisticByYearService 3333: ${error.message}`);
   });
 };

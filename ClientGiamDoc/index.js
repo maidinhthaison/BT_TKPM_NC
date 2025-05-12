@@ -4,7 +4,7 @@ import { dirname } from "path";
 import { config } from "./config.js";
 import Handlebars from 'handlebars';
 import { engine } from "express-handlebars";
-import { apiUserClient, apiStatisticClient, apiOrderClient } from "./client.js";
+import { apiUserClient, apiStatisticClient, apiOrderClient, apiConfigClient } from "./client.js";
 import { endPoint } from "./endPoint.js";
 import { HTTP_CODE, MESSAGE } from "./constant.js";
 import { LocalStorage } from "node-localstorage";
@@ -35,7 +35,10 @@ Handlebars.registerHelper('formatCurrency', (amount, locale, currency) => {
   }).format(amount);
 });
 
-
+Handlebars.registerHelper('findById', function(array, id, options) {
+  const item = array.find(el => el.id === id);
+  return item ? options.fn(item) : options.inverse(this);
+});
 
 app.set("view engine", ".hbs");
 app.set("views", "./views");
@@ -110,32 +113,46 @@ app.post("/login", async (req, res) => {
 app.post("/statistic", async (req, res) => {
   try {
     const access_token = localStorage.getItem("access_token");
-    
+
     if (access_token === null) {
       res.redirect("/login");
     } else {
-      console.log("Call get statistic by year API");
+      console.log("Call get statistic by month and year API");
       const params = {
-        month : req.body.edt_month
-      }
-     
-      const response = await apiStatisticClient.post(endPoint.getStatisticByMonth, params);
-     
-      const data = response.data
+        month: req.body.edt_month,
+      };
+      // Reponse Month
+      const response = await apiStatisticClient.post(
+        endPoint.getStatisticByMonth,
+        params
+      );
+      const data = response.data;
       const status = data.status;
-      const user = localStorage.getItem('user');
-      if (status == HTTP_CODE[200].code) {
+      
+      // Reponse Year
+      const responseYear = await apiStatisticClient.post(
+        endPoint.getStatisticByYear,
+        params
+      );
+      const dataYear = responseYear.data;
+      const statusYear = dataYear.status;
+      
+      const user = localStorage.getItem("user");
+
+      if (status == HTTP_CODE[200].code && statusYear== HTTP_CODE[200].code) {
         res.render("main", {
           layout: "index",
           user: JSON.parse(user),
-          statistic: data.statistic,
-          summary : data.summary,
-          status: status
+          statisticMonth: data.statistic,
+          summaryMonth: data.summary,
+          statisticYear: dataYear.statistic,
+          summaryYear: dataYear.summary,
+          status: status,
         });
-        
       } else {
         res.status(HTTP_CODE[400].code).send(HTTP_CODE[400].message);
       }
+
     }
   } catch (err) {
     console.error(`Error: >>> ${err.message}`);
@@ -182,13 +199,45 @@ app.post("/search", async (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-    res.render("login", { layout: "loginLayout" });
+    res.render("login", { layout: "loginLayout", title: "Đăng nhập" });
 });
 
 app.get("/tracuu", (req, res) => {
-  res.render("tracuu", { layout: "tracuuLayout" });
+  const user = localStorage.getItem('user');
+  res.render("tracuu", { layout: "tracuuLayout", title: "Tra cứu", user: JSON.parse(user) });
+});
+
+app.get("/quanlygia", async (req, res) => {
+  const user = localStorage.getItem('user');
+
+  try {
+    const access_token = localStorage.getItem("access_token");
+    console.log('access_token >>>', access_token);
+    
+    if (access_token === null) {
+      res.redirect("/login");
+    } else {
+      console.log("Call Get ALl LoaiPhong API");
+  
+      const response = await apiConfigClient.get(endPoint.getALlLoaiPhong)
+      const data = response.data;
+      
+      const user = localStorage.getItem('user');
+      res.render("quanlygia", { 
+        layout: "quanlygiaLayout", 
+        title: "Quản lý cấu hình", 
+        user: JSON.parse(user),
+        arrayLoaiPhong : data.arrayLoaiPhong
+      });
+    }
+  } catch (err) {
+    
+    console.error(`Error: >>> ${err.message}`);
+    res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
+  }
+  
 });
 
 app.listen(config.port, () =>
-  console.log(`Client Quản Lý is listening on url ${config.url}`)
+  console.log(`Client Giám đốc is listening on url ${config.url}`)
 );

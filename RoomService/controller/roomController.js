@@ -1,4 +1,4 @@
-import { xulyGetAllRooms, searchRooms } from "../services/roomService.js";
+import { xulyGetAllRooms, searchRooms, getAllLoaiPhongService } from "../services/roomService.js";
 export const getAllRoomsController = async (req, res, next) => {
   try {
     const response = await xulyGetAllRooms(); 
@@ -19,3 +19,15 @@ export const searchRoomsController = async (req, res, next) => {
     res.status(400).send(error.message);
   }
 };
+
+export const getAllLoaiPhongController = async (req, res) => {
+  try {
+    const response = await getAllLoaiPhongService(); 
+    res.status(200).send(response);
+  } catch (error) {
+    console.log(res.status);
+    res.status(400).send(error.message);
+  }
+};
+
+
