@@ -1,15 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   const selectElement = document.getElementById("cbLoaiPhong");
   const loaiPhongIdElement = document.getElementById("loaiPhongId");
-
+  const hrefElement = document.getElementById("loaiPhongIdHref");
   if (selectElement) {
-    loaiPhongIdElement.value = selectElement.options[0].value;
-    selectElement.addEventListener("change", function (event) {
+    selectElement.addEventListener("change",  (event) => {
       const selectedValue = event.target.value;
       const selectedText = selectElement.options[selectElement.selectedIndex].text;
 
       loaiPhongIdElement.value = selectedValue;
-
+      hrefElement.setAttribute('href', `/quanlygia?id=${selectedValue}`);
+      // window.location.href = `/quanlygia?loaiPhongId=${encodeURIComponent(selectedValue)}`;
       // Your code to execute when an item is selected goes here
       console.log("Selected value:", selectedValue);
       console.log("Selected text:", selectedText);
@@ -19,7 +19,3 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-function handleClick(id) {
-  const el = document.getElementById(id);
-  console.log(el.textContent);
-}
