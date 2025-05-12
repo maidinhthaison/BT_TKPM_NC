@@ -35,9 +35,13 @@ Handlebars.registerHelper('formatCurrency', (amount, locale, currency) => {
   }).format(amount);
 });
 
-Handlebars.registerHelper('findById', function(array, id, options) {
+Handlebars.registerHelper('findById', (array, id, options) => {
   const item = array.find(el => el.id === id);
   return item ? options.fn(item) : options.inverse(this);
+});
+
+Handlebars.registerHelper('equals', (a, b) => {
+  return a === b;
 });
 
 app.set("view engine", ".hbs");
@@ -209,7 +213,7 @@ app.get("/tracuu", (req, res) => {
 
 app.get("/quanlygia", async (req, res) => {
   const user = localStorage.getItem('user');
-
+  let  loaiPhongId = req.query.id;
   try {
     const access_token = localStorage.getItem("access_token");
     console.log('access_token >>>', access_token);
@@ -223,12 +227,67 @@ app.get("/quanlygia", async (req, res) => {
       const data = response.data;
       
       const user = localStorage.getItem('user');
+   
+      if(loaiPhongId === undefined){
+        loaiPhongId = data.arrayLoaiPhong[0].id;
+      }
+      let item = data.arrayLoaiPhong.find(item => item.id === loaiPhongId);
+      if(item){
+        item.selected = true;
+      }
+     
       res.render("quanlygia", { 
         layout: "quanlygiaLayout", 
         title: "Quản lý cấu hình", 
         user: JSON.parse(user),
-        arrayLoaiPhong : data.arrayLoaiPhong
+        arrayLoaiPhong : data.arrayLoaiPhong,
+        loaiPhongId: loaiPhongId
       });
+    }
+  } catch (err) {
+    
+    console.error(`Error: >>> ${err.message}`);
+    res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
+  }
+  
+});
+/**
+ * Update giá
+ */
+app.post("/capNhatCauHinh", async (req, res) => {
+  const user = localStorage.getItem('user');
+  let  loaiPhongId = req.body
+  console.log('asdasd', JSON.stringify(loaiPhongId, null, 2));
+  
+  try {
+    const access_token = localStorage.getItem("access_token");
+    console.log('access_token >>>', access_token);
+    
+    if (access_token === null) {
+      res.redirect("/login");
+    } else {
+      // console.log("Call Update price API");
+  
+      // const response = await apiConfigClient.get(endPoint.getALlLoaiPhong)
+      // const data = response.data;
+      
+      // const user = localStorage.getItem('user');
+   
+      // if(loaiPhongId === undefined){
+      //   loaiPhongId = data.arrayLoaiPhong[0].id;
+      // }
+      // let item = data.arrayLoaiPhong.find(item => item.id === loaiPhongId);
+      // if(item){
+      //   item.selected = true;
+      // }
+     
+      // res.render("quanlygia", { 
+      //   layout: "quanlygiaLayout", 
+      //   title: "Quản lý cấu hình", 
+      //   user: JSON.parse(user),
+      //   arrayLoaiPhong : data.arrayLoaiPhong,
+      //   loaiPhongId: loaiPhongId
+      // });
     }
   } catch (err) {
     

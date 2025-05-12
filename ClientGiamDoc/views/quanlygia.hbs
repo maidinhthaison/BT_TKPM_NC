@@ -1,27 +1,31 @@
 
 <div class="form-container">
-    <h2>Cấu hình</h2>
-    <form id="configForm" method="post" action="/capNhatCauHinh">
-     
+    <h2>Cấu hình</h2>  
       <label for="cbLoaiPhong"><h4>Chọn loại phòng</h4></label>
       {{#if arrayLoaiPhong}}
         <select id="cbLoaiPhong" name="cbLoaiPhong" class="combobox">
           {{#each arrayLoaiPhong}}
-            <option value={{id}}>{{tenLoaiPhong}}</option>
+            <option value={{id}} {{#if (equals selected true )}}selected{{/if}}>{{tenLoaiPhong}}</option>
           {{/each}}
         </select>
-        <input type="hidden" id="loaiPhongId" name="loaiPhongId">
+        <a href='/quanlygia?id={{loaiPhongId}}' id="loaiPhongIdHref" >Lấy cấu hình</a>
         
-        {{#findById arrayLoaiPhong 'LP1'}}
-          <label>Đơn giá phòng</label>
-          <input type="text" id="dongiaPhong" name="dongiaPhong" value="{{cauHinh.dongiaPhong}}" required>
-        {{else}}
-          <p>Not found</p>
-        {{/findById}}
+        <form id="configForm" method="post" action="/capNhatCauHinh">
+          {{#findById arrayLoaiPhong loaiPhongId }}
+            <label><h4>Thông tin cấu hình</h4></label>
+            <input type="hidden" id="cauHinhId" name="cauHinhId" value="{{cauHinh.id}}" readonly>
+            <label>Thay đổi giá phòng</label>
+            <input type="text" id="dongiaPhong" name="dongiaPhong" value="{{cauHinh.dongiaPhong}}" required>
+            
+          {{else}}
+            <p>Not found</p>
+          {{/findById}}
+          <br><br>
+          
+          <input type="hidden" id="loaiPhongId" name="loaiPhongId" value="{{loaiPhongId}}">
+          <button type="submit" id="capNhatGiaButton">Cập nhật</button>
+        </form>
       {{/if}}
-      <br><br>
-
-      <button type="submit" id="capNhatGiaButton">Cập nhật</button>
-    </form>
+      
 </div> 
 
