@@ -1,4 +1,4 @@
-{{>header}}
+
 <form id="searchForm" action="/search" method="post">
   <div class="search-container">
     <input type="text" id="inputSearch" name="inputSearch" placeholder="Tìm kiếm..." />
@@ -7,7 +7,7 @@
 </form>
 {{#if orderDetails}}
  <div style="display: flex; flex-direction: column; min-height: 100vh;">
-      <table>
+      <table class="simple-table">
         <thead>
           <tr>
             <th>Mã Order</th>
@@ -35,4 +35,4 @@
   </div> 
 
 {{/if}}
-{{>footer}}
+

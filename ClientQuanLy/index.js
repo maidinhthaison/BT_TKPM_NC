@@ -35,9 +35,12 @@ Handlebars.registerHelper("formatCurrency", (amount, locale, currency) => {
   }).format(amount);
 });
 
-
 app.set("view engine", ".hbs");
 app.set("views", "./views");
+
+app.get("/login", (req, res) => {
+  res.render("login", { layout: "loginLayout" });
+});
 
 // Thống kê
 app.get("/", (req, res) => {
@@ -131,30 +134,42 @@ app.post("/statistic", async (req, res) => {
     if (access_token === null) {
       res.redirect("/login");
     } else {
-      console.log("Call get statistic by month API");
+      console.log("Call get statistic by month and year API");
       const params = {
         month: req.body.edt_month,
       };
-
+      // Reponse Month
       const response = await apiStatisticClient.post(
         endPoint.getStatisticByMonth,
         params
       );
-
       const data = response.data;
       const status = data.status;
+      
+      // Reponse Year
+      const responseYear = await apiStatisticClient.post(
+        endPoint.getStatisticByYear,
+        params
+      );
+      const dataYear = responseYear.data;
+      const statusYear = dataYear.status;
+      
       const user = localStorage.getItem("user");
-      if (status == HTTP_CODE[200].code) {
+
+      if (status == HTTP_CODE[200].code && statusYear== HTTP_CODE[200].code) {
         res.render("main", {
           layout: "index",
           user: JSON.parse(user),
-          statistic: data.statistic,
-          summary: data.summary,
+          statisticMonth: data.statistic,
+          summaryMonth: data.summary,
+          statisticYear: dataYear.statistic,
+          summaryYear: dataYear.summary,
           status: status,
         });
       } else {
         res.status(HTTP_CODE[400].code).send(HTTP_CODE[400].message);
       }
+
     }
   } catch (err) {
     console.error(`Error: >>> ${err.message}`);
@@ -164,9 +179,7 @@ app.post("/statistic", async (req, res) => {
 /**
  * Search Order
  */
-/**
- * Search Order
- */
+
 app.post("/search", async (req, res) => {
   try {
     const access_token = localStorage.getItem("access_token");
@@ -199,10 +212,6 @@ app.post("/search", async (req, res) => {
     console.error(`Error: >>> ${err.message}`);
     res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
   }
-});
-
-app.get("/login", (req, res) => {
-  res.render("login", { layout: "loginLayout" });
 });
 
 app.listen(config.port, () =>

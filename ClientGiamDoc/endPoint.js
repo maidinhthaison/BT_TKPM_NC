@@ -3,6 +3,7 @@ export const endPoint = {
     getStatisticByMonth : "/api/statistic/getStatisticByMonth",
     orderDetailEndPoint : "/api/order/getOrderDetails",
     getStatisticByYear: "/api/statistic/getStatisticByYear",
-    searchOrder : "/api/order/searchOrder"
+    searchOrder : "/api/order/searchOrder",
+    getALlLoaiPhong : "/api/config/getAllLoaiPhong"
   };
   

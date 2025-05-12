@@ -40,43 +40,6 @@ form button:hover {
   background-color: #c039b7;
 }
 
-/** Toast */
-.toast {
-  visibility: hidden;
-  min-width: 250px;
-  margin-left: -125px;
-  background-color: #333;
-  color: #fff;
-  text-align: center;
-  border-radius: 8px;
-  padding: 12px;
-  position: fixed;
-  z-index: 1;
-  left: 50%;
-  bottom: 30px;
-  font-size: 16px;
-  opacity: 0;
-  transition: opacity 0.5s ease, bottom 0.5s ease;
-}
-
-.toast.show {
-  visibility: visible;
-  opacity: 1;
-  bottom: 50px;
-}
-.simple-paragraph {
-  font-family: "Arial", sans-serif;
-  font-size: 18px;
-  color: #333;
-  line-height: 1.6;
-  margin: 20px;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-left: 4px solid #6e1f69;
-  border-radius: 5px;
-  
-}
-
 /** statistic table **/
 .simple-table {
   width: 80%;
@@ -95,7 +58,7 @@ form button:hover {
 }
 
 .simple-table th {
-  background-color: #4CAF50;
+  background-color: #6e1f69;
   color: white;
 }
 

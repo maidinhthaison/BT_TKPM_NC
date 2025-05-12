@@ -181,17 +181,16 @@ export const searchOrderService = async (keyword) => {
           return { ...order, khachDatPhong, phongDaDat };
         }
       });
-      const removeNull = orderDetails.filter(
-        (item) => item !== null && item !== undefined
-      );
-
-      const result = removeNull.filter(
+    
+      // Tìm kiếm theo ngày thuê, ngày trả, loại phòng, họ tên khách hàng
+      const result = orderDetails.filter(
         (item) =>
           item.ngayThue.toLowerCase().includes(keyword.toLowerCase()) ||
           item.ngayTra.toLowerCase().includes(keyword.toLowerCase()) ||
           item.phongDaDat.loaiPhong.tenLoaiPhong
             .toLowerCase()
-            .includes(keyword.toLowerCase())
+            .includes(keyword.toLowerCase()) ||
+          item.khachDatPhong.hoTen.toLowerCase().includes(keyword.toLowerCase()) 
       );
       console.log(`searchOrder >>> : ${JSON.stringify(result, null, 2)}`);
 

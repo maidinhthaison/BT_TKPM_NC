@@ -4,6 +4,7 @@ const localStorage = new LocalStorage('./scratch');
 const baseURLUserService = "http://localhost:3000"; // UserService
 const baseURLStatisticService = "http://localhost:3003"; // Statistic service
 const baseURLOrderService = "http://localhost:3002"; // OrderService
+const baseURLConfigService = "http://localhost:3004"; // ConfigService
 
 /**
  * User Client
@@ -61,6 +62,25 @@ apiOrderClient.interceptors.request.use(
       console.log('Authorization Bearer apiOrderClient>>>', access_token);
       conf.headers["Authorization"] = `Bearer ${access_token}`;
     }
+    return conf;
+  },
+  (error) => Promise.reject(error)
+);
+/**
+ * Config Client
+ */
+export const apiConfigClient = axios.create({
+  baseURL: baseURLConfigService
+});
+
+apiConfigClient.interceptors.request.use(
+  (conf) => {
+    conf.headers["Content-Type"] = "application/json";
+    if(access_token !== null){
+      console.log('Authorization Bearer apiConfigClient>>>', access_token);
+      conf.headers["Authorization"] = `Bearer ${access_token}`;
+    }
+    
     return conf;
   },
   (error) => Promise.reject(error)

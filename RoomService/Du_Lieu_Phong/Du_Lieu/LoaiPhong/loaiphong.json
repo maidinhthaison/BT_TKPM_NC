@@ -26,9 +26,9 @@
     }
   },
   {
-    "id": "LP2",
-    "tenLoaiPhong": "Bình dân",
-    "dongiaPhong": "250000",
+    "id": "LP3",
+    "tenLoaiPhong": "Phổ thông",
+    "dongiaPhong": "100000",
     "tienNghi": "Máy quạt",
     "khachToiDa": "1",
     "cauHinh": {
