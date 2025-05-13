@@ -4,6 +4,7 @@ export const endPoint = {
     orderDetailEndPoint : "/api/order/getOrderDetails",
     getStatisticByYear: "/api/statistic/getStatisticByYear",
     searchOrder : "/api/order/searchOrder",
-    getALlLoaiPhong : "/api/config/getAllLoaiPhong"
+    getALlLoaiPhong : "/api/config/getAllLoaiPhong",
+    capNhatGia : "/api/config/updateUnitPrice"
   };
   

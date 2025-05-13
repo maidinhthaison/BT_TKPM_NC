@@ -92,7 +92,7 @@ app.post("/login", async (req, res) => {
           user: user,
           message: MESSAGE.LOGIN_SUCCESS,
           status: status,
-          loginToastMessage: "Đăng nhập thành công"
+          loginToastMessage: "Cập nhật thành công"
         });
        res.redirect('/');
       } else {
@@ -256,9 +256,8 @@ app.get("/quanlygia", async (req, res) => {
  */
 app.post("/capNhatCauHinh", async (req, res) => {
   const user = localStorage.getItem('user');
-  let  loaiPhongId = req.body
-  console.log('asdasd', JSON.stringify(loaiPhongId, null, 2));
-  
+  let  params = req.body
+  let  loaiPhongId = req.query.id;
   try {
     const access_token = localStorage.getItem("access_token");
     console.log('access_token >>>', access_token);
@@ -266,28 +265,30 @@ app.post("/capNhatCauHinh", async (req, res) => {
     if (access_token === null) {
       res.redirect("/login");
     } else {
-      // console.log("Call Update price API");
+      console.log("Call Update price API");
   
-      // const response = await apiConfigClient.get(endPoint.getALlLoaiPhong)
-      // const data = response.data;
-      
-      // const user = localStorage.getItem('user');
+      const response = await apiConfigClient.post(endPoint.capNhatGia, params)
+      const data = response.data;
+    
+      const user = localStorage.getItem('user');
    
-      // if(loaiPhongId === undefined){
-      //   loaiPhongId = data.arrayLoaiPhong[0].id;
-      // }
-      // let item = data.arrayLoaiPhong.find(item => item.id === loaiPhongId);
-      // if(item){
-      //   item.selected = true;
-      // }
+      if(loaiPhongId === undefined){
+        loaiPhongId = data.arrayLoaiPhong[0].id;
+      }
+      let item = data.arrayLoaiPhong.find(item => item.id === loaiPhongId);
+      if(item){
+        item.selected = true;
+      }
      
-      // res.render("quanlygia", { 
-      //   layout: "quanlygiaLayout", 
-      //   title: "Quản lý cấu hình", 
-      //   user: JSON.parse(user),
-      //   arrayLoaiPhong : data.arrayLoaiPhong,
-      //   loaiPhongId: loaiPhongId
-      // });
+      res.render("quanlygia", { 
+        layout: "quanlygiaLayout", 
+        title: "Quản lý cấu hình", 
+        user: JSON.parse(user),
+        arrayLoaiPhong : data.arrayCauHinh,
+        arrayCauHinh : data.arrayCauHinh,
+        loaiPhongId: data.loaiPhongId,
+        updateMessageToast : 'Cập nhật thành công'
+      });
     }
   } catch (err) {
     

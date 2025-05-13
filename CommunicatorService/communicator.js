@@ -17,3 +17,8 @@ export const getAllLoaiPhong = async () => {
   const response = await apiRoomClient.get('api/room/getAllLoaiPhong');
   return response.data;
 }
+
+export const capNhatGiaPhong = async (params) => {
+  const response = await apiRoomClient.post('api/room/updateRoomUnitPrice', params);
+  return response.data;
+} 

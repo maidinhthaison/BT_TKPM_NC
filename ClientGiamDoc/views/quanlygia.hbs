@@ -25,6 +25,9 @@
           <input type="hidden" id="loaiPhongId" name="loaiPhongId" value="{{loaiPhongId}}">
           <button type="submit" id="capNhatGiaButton">Cập nhật</button>
         </form>
+        {{#if updateMessageToast}}
+          <div id="toast" class="toast">{{updateMessageToast}}</div>
+        {{/if}}
       {{/if}}
       
 </div> 

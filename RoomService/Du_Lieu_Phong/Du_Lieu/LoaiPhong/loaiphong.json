@@ -9,20 +9,20 @@
       "id": "CH1",
       "khachToiDa": "4",
       "dongiaPhong": "300000",
-      "ngayCapNhat": "2025-01-02"
+      "ngayCapNhat": "2025-05-14"
     }
   },
   {
     "id": "LP2",
     "tenLoaiPhong": "Bình dân",
-    "dongiaPhong": "250000",
+    "dongiaPhong": "200000",
     "tienNghi": "Máy quạt, Wifi",
     "khachToiDa": "3",
     "cauHinh": {
       "id": "CH2",
       "khachToiDa": "3",
-      "dongiaPhong": "250000",
-      "ngayCapNhat": "2025-02-02"
+      "dongiaPhong": "200000",
+      "ngayCapNhat": "2025-05-14"
     }
   },
   {
@@ -35,7 +35,7 @@
       "id": "CH3",
       "khachToiDa": "1",
       "dongiaPhong": "100000",
-      "ngayCapNhat": "2025-04-02"
+      "ngayCapNhat": "2025-05-14"
     }
   }
 ]
