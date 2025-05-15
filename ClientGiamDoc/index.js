@@ -255,7 +255,6 @@ app.get("/quanlygia", async (req, res) => {
  * Update giá
  */
 app.post("/capNhatCauHinh", async (req, res) => {
-  const user = localStorage.getItem('user');
   let  params = req.body
   let  loaiPhongId = req.query.id;
   try {
