@@ -1,10 +1,3 @@
-export const formatCurrency = (amount, locale = "vi-VN", currency = "VND") => {
-  return new Intl.NumberFormat(locale, {
-    style: "currency",
-    currency: currency,
-  }).format(amount);
-};
-
 export const getDateWithFormat = () => {
   const now = new Date();
   const year = now.getFullYear();
