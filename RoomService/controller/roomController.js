@@ -3,6 +3,8 @@ import { xulyGetAllRooms, searchRooms, getAllLoaiPhongService, capNhatGiaTheoLoa
 export const getAllRoomsController = async (req, res, next) => {
   try {
     const response = await xulyGetAllRooms(); 
+    console.log(JSON.stringify(response, null, 2));
+    
     res.status(200).send(response);
   } catch (error) {
     console.log(res.status);

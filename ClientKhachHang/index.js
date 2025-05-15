@@ -2,6 +2,7 @@ import express from "express";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import { config } from "./config.js";
+import Handlebars from "handlebars";
 import { engine } from "express-handlebars";
 import { apiClient } from "./client.js";
 import { endPoint } from "./endpoint.js";
@@ -23,6 +24,14 @@ app.engine(
     partialsDir: __dirname + "/views/partials/",
   })
 );
+
+// đăng ký hàm format tiền tệ để gọi trong handlebars
+Handlebars.registerHelper("formatCurrency", (amount, locale, currency) => {
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency,
+  }).format(amount);
+});
 
 app.set("view engine", ".hbs");
 app.set("views", "./views");
@@ -51,11 +60,15 @@ app.get("/login", (req, res) => {
   res.render("login", { layout: "loginLayout" });
 });
 app.get("/about", (req, res) => {
-  res.render("about", { layout: "aboutLayout" });
+  res.render("about", { layout: "aboutLayout", cdnUrl : config.cdn_url });
 });
 
 app.get("/contact", (req, res) => {
-  res.render("contact", { layout: "contactLayout" });
+  res.render("contact", 
+    { 
+      layout: "contactLayout",
+      cdnUrl : config.cdn_url
+    });
 });
 
 app.post("/search", async (req, res) => {
@@ -100,5 +113,5 @@ app.post("/search", async (req, res) => {
 });
 
 app.listen(config.port, () =>
-  console.log(`Client Khach Hang is listening on url ${config.url}`)
+  console.log(`Client Khach Hang is listening on ${config.host} port ${config.port}`)
 );

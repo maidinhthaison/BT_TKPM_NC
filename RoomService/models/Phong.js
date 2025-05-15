@@ -1,7 +1,6 @@
 import { LoaiPhong } from './LoaiPhong.js';
 import { KhuVuc } from './KhuVuc.js';
 import { config } from '../config.js';
-import { formatCurrency } from '../utils.js';
 export class Phong {
   constructor(id, tenPhong, trangThai, loaiPhong, khuVuc, hinh) {
     this.id = id;
@@ -21,12 +20,13 @@ export class Phong {
       khuVuc.tang
     );
     this.hinh = hinh;
-    this.formatLinkHinh = config.url + '/Media/' + this.hinh;
+    this.formatLinkHinh = `${config.cdn_url}/images/rooms/${this.hinh}`;
     this.formatTenPhong = this.khuVuc.tenKv + '-' + this.khuVuc.tang[0].tenTang + '-' + this.tenPhong;
-    this.formatGiaPhong = formatCurrency(loaiPhong.dongiaPhong, 'vi-VN', 'VND') + '/giờ';
   }
 }
 const TrangThaiPhong = Object.freeze({
   TRONG: "Đang trống",
   DA_DUOC_THUE: "Đã được thuê"
 });
+
+ //formatCurrency(loaiPhong.dongiaPhong, 'vi-VN', 'VND') + '/giờ'

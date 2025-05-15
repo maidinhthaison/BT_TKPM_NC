@@ -25,4 +25,4 @@ app.use(express.static(path.join(__dirname, 'Du_Lieu_Phong')));
 app.use('/api',roomRoutes.routes);
 
 
-app.listen(config.port, () => console.log(`Room Service is listening on url ${config.url}`));
+app.listen(config.port, () => console.log(`Room Service is listening on ${config.host} port ${config.port}`));
