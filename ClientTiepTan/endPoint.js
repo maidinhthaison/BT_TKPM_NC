@@ -3,5 +3,6 @@ export const endPoint = {
   orderDetailEndPoint : "/api/order/getOrderDetails",
   orderDetailByIdEndPoint : "/api/order/getOrderDetailsById",
   searchOrder : "/api/order/searchOrder",
-  updateOrderById : "/api/order/updateOrderById"
+  updateOrderById : "/api/order/updateOrderById",
+  getNewAccessTokenEndPoint : "/api/user/refreshToken"
 };

@@ -5,6 +5,7 @@ export const endPoint = {
     getStatisticByYear: "/api/statistic/getStatisticByYear",
     searchOrder : "/api/order/searchOrder",
     getALlLoaiPhong : "/api/config/getAllLoaiPhong",
-    capNhatGia : "/api/config/updateUnitPrice"
+    capNhatGia : "/api/config/updateUnitPrice",
+    getNewAccessTokenEndPoint : "/api/user/refreshToken"
   };
   
