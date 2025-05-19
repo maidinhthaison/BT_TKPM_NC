@@ -35,7 +35,7 @@ export const getAllKhachHangController = async (req, res) => {
 export const userRefreshTokenController = async (req, res) => {
   try {
    
-    const bearer = req.headers.authorization.split(' ')[1];
+    const bearer = req.headers.token.split(' ')[1];
 
     if (!bearer) {
         console.log('Refresh token is not valid');

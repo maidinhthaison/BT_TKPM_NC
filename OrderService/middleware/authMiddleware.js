@@ -1,35 +1,34 @@
 import jwt from 'jsonwebtoken';
 import { HTTP_CODE } from '../constant.js';
 import { config } from '../config.js';
+const TAG = 'authMiddleware OrderService: '
 const authMiddleware = (req, res, next) => {
-    console.log('authMiddleware >>>>>>>>',req.headers);
-    
-    console.log('authMiddleware >>>>>>>>',req.headers.authorization.split(' ')[1]);
-    
-    const bearer = req.headers.authorization.split(' ')[1]
+    console.log(TAG,req.headers);
+    const bearer = req.headers.authorization.split(' ')[1];
+    console.log(TAG,bearer);
    
     if(!bearer){
-        console.log('authMiddleware >>>>>>>>','Not Found');
+        console.log(TAG,'Not Found');
         
         return res.status(HTTP_CODE[404].code).json({
             message: HTTP_CODE[404].message
         })
     }
     jwt.verify(bearer, config.accessTokenSecret, (err, user) => {
-        console.log('authMiddleware >>>>>>>>',user);
-        console.log('authMiddleware >>>>>>>>',err);
+        console.log(TAG,user);
+        console.log(TAG,err);
         if(err){
             
-            console.log('Access Token has expired, need call refresh token');
+            console.log(TAG, 'Access Token has expired, need call refresh token');
             return res.status(HTTP_CODE[403].code).json({
                 message: HTTP_CODE[403].message
             })
         }
         if(listMaso.includes(user.maSo)){
-            console.log('authMiddleware >>>>>>>> NEXT');
+            console.log(TAG, 'NEXT');
             next()
         }else {
-            console.error('authMiddleware >>>>>>>>Token verification failed:', err.message);
+            console.error(TAG, `Token verification failed: ${err.message}`);
             return res.status(HTTP_CODE[403].code).json({
                 message: HTTP_CODE[403].message
             })

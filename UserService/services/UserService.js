@@ -155,43 +155,39 @@ const generateRefreshToken = (data) => {
   return access_token;
 };
 
-export const refreshTokenService = async (token) => {
-  try {
-    return await new Promise((resolve, reject) => {
-      try {
-        jwt.verify(token, config.refreshTokenSecret, function (err, user) {
-          if (err) {
+export const refreshTokenService = async (refreshToken) => {
+  return await new Promise((resolve, reject) => {
+    try {
+      
+      jwt.verify(refreshToken, config.refreshTokenSecret, (err, user) => {
+        if (err) {
+          resolve({
+            status: HTTP_CODE[401].code,
+            message: `${HTTP_CODE[401].message} - The user is not authentication`,
+          });
+        } else {
+          if (user) {
+            const newAcessToken = generateAcessToken({ maSo: user.maSo });
+            resolve({
+              status: HTTP_CODE[200].code,
+              message: HTTP_CODE[200].message,
+              access_token: newAcessToken,
+            });
+          } else {
 
             resolve({
               status: HTTP_CODE[401].code,
               message: `${HTTP_CODE[401].message} - The user is not authentication`,
             });
-          } else {
-            if (user) {
-              const newAcessToken = generateAcessToken({ maSo: user.maSo });
-              resolve({
-                status: HTTP_CODE[200].code,
-                message: HTTP_CODE[200].message,
-                access_token: newAcessToken,
-              });
-            } else {
-
-              resolve({
-                status: HTTP_CODE[401].code,
-                message: `${HTTP_CODE[401].message} - The user is not authentication`,
-              });
-            }
           }
-        });
-      } catch (error) {
-        console.log('4444: ', error);
-        reject({
-          status: HTTP_CODE[503].code,
-          message: HTTP_CODE[503].message,
-        });
-      }
-    });
-  } catch (e) {
-    return console.log(e);
-  }
+        }
+      });
+    } catch (error) {
+      console.log('4444: ', error);
+      reject({
+        status: HTTP_CODE[503].code,
+        message: HTTP_CODE[503].message,
+      });
+    }
+  });
 };

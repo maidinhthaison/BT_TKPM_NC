@@ -3,18 +3,18 @@
     "id": "CH1",
     "khachToiDa": "4",
     "dongiaPhong": "300000",
-    "ngayCapNhat": "2025-05-14"
+    "ngayCapNhat": "2025-05-19"
   },
   {
     "id": "CH2",
     "khachToiDa": "2",
     "dongiaPhong": "200000",
-    "ngayCapNhat": "2025-05-18"
+    "ngayCapNhat": "2025-05-19"
   },
   {
     "id": "CH3",
     "khachToiDa": "1",
     "dongiaPhong": "100000",
-    "ngayCapNhat": "2025-05-14"
+    "ngayCapNhat": "2025-05-19"
   }
 ]

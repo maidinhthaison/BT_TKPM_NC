@@ -1,13 +1,12 @@
 import jwt from 'jsonwebtoken';
 import { HTTP_CODE } from '../constant.js';
 import { config } from '../config.js';
+const TAG = 'authMiddleware ConfigService: '
 const authMiddleware = (req, res, next) => {
-    const TAG = 'authMiddleware Config service: '
     let headers =  req.headers;
-    
-    console.log(`${TAG} headers - ${JSON.stringify(headers, null,2)}`);
+    console.log(TAG, `Header : ${JSON.stringify(headers, null,2)}`);
     const bearer = headers.authorization.split(' ')[1]
-    console.log(`${TAG} Bearer - ${bearer}`);
+    console.log(TAG, `Bearer - ${bearer}`);
     
    
     if(bearer == null){
