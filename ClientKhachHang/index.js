@@ -56,9 +56,7 @@ app.get("/", async (req, res) => {
     res.status(500).send("Server error");
   }
 });
-app.get("/login", (req, res) => {
-  res.render("login", { layout: "loginLayout" });
-});
+
 app.get("/about", (req, res) => {
   res.render("about", { layout: "aboutLayout", cdnUrl : config.cdn_url });
 });
