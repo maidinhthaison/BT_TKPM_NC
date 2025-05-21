@@ -7,6 +7,7 @@ import { apiUserClient, apiOrderClient } from "./client.js";
 import { endPoint } from "./endPoint.js";
 import { HTTP_CODE, MESSAGE } from "./constant.js";
 import { LocalStorage } from "node-localstorage";
+import Handlebars from "handlebars";
 const localStorage = new LocalStorage("./scratch");
 
 const __filename = fileURLToPath(import.meta.url);
@@ -26,6 +27,15 @@ app.engine(
     partialsDir: __dirname + "/views/partials/",
   })
 );
+
+// đăng ký hàm format tiền tệ để gọi trong handlebars
+Handlebars.registerHelper("formatCurrency", (amount, locale, currency) => {
+  return new Intl.NumberFormat(locale, {
+    style: "currency",
+    currency: currency,
+  }).format(amount);
+});
+
 app.set("view engine", ".hbs");
 app.set("views", "./views");
 

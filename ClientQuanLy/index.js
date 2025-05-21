@@ -42,6 +42,8 @@ app.get("/login", (req, res) => {
   res.render("login", { layout: "loginLayout" });
 });
 
+const TAG = "Client Quản Lý: ";
+
 // Thống kê
 app.get("/", (req, res) => {
   const user = localStorage.getItem("user");
@@ -78,9 +80,38 @@ app.get("/tracuu", async (req, res) => {
 
     }
   } catch (err) {
-    
-    console.error(`Error: >>> ${err.message}`);
-    res.status(HTTP_CODE[500].code).send(HTTP_CODE[500].message);
+    console.error(TAG, `Error: >>> ${err.message}`);
+    const status = err.status;
+    if (status === HTTP_CODE[403].code) {
+      res.status(HTTP_CODE[403].code).send(HTTP_CODE[403].message);
+      // call refresh token
+      const refreshToken = localStorage.getItem("refresh_token");
+      console.log(TAG, `Call refresh token , ${refreshToken}`);
+      const resp = await apiUserClient.post(
+        endPoint.getNewAccessTokenEndPoint,
+        { refresh_token: refreshToken }
+      );
+      console.log(TAG, JSON.stringify(resp.data, null, 2));
+      const dataResp = resp.data;
+      if (dataResp.status === HTTP_CODE[200].code) {
+        const newAcccessToken = dataResp.access_token;
+        localStorage.setItem("access_token", newAcccessToken);
+        // Continue call order detail
+        console.log("Continue call order detail");
+        const orderDetailResp = await apiOrderClient.get(
+          endPoint.orderDetailEndPoint
+        );
+        const data = orderDetailResp.data;
+        const status = data.status;
+        const user = localStorage.getItem("user");
+        res.render("tracuu", {
+          layout: "traCuuLayout",
+          user: JSON.parse(user),
+          orderDetails: data.orderDetails,
+          status: status,
+        });
+      }
+    }
   }
 });
 
@@ -95,7 +126,9 @@ app.post("/login", async (req, res) => {
     const status = data.status;
     const user = data.data.user;
     const accessToken = data.data.accessToken;
+    const refreshToken = data.data.refreshToken;
     localStorage.setItem("access_token", accessToken);
+    localStorage.setItem("refresh_token", refreshToken);
     localStorage.setItem("user", JSON.stringify(user, null, 2));
     if (status == HTTP_CODE[200].code) {
       if (accessToken) {

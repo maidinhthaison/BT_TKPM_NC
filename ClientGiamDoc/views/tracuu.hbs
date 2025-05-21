@@ -10,24 +10,21 @@
       <table class="simple-table">
         <thead>
           <tr>
-            <th>Mã Order</th>
-            <th>Ngày thuê</th>
+            <th>Số phòng</th>
+            <th>Ngày nhận</th>
             <th>Ngày trả</th>
-            <th>Tổng tiền</th>
             <th>Khách hàng</th>
-            <th>Phòng đặt</th>
-          
+            <th>Tổng tiền</th>
           </tr>
         </thead>
         <tbody>
           {{#each orderDetails}}
             <tr>
-              <td>{{id}}</td>
+              <td>{{phongDaDat.tenPhong}}<br>{{phongDaDat.loaiPhong.tenLoaiPhong}}</td>
               <td>{{ngayThue}}</td>
               <td>{{ngayTra}}</td>
-              <td>{{formatCurrency tongtien 'vi-VN' 'VND'}}</td>
-              <td>Tên: {{khachDatPhong.hoTen}}<br>SDT: {{khachDatPhong.dienThoai}}</td>
-              <td>{{phongDaDat.tenPhong}}<br>{{phongDaDat.loaiPhong.tenLoaiPhong}}</td>
+              <td>Tên: {{khachDatPhong.hoTen}}<br>CMND: {{khachDatPhong.cccd}}</td>
+              <td>{{formatCurrency tongtien 'vi-VN' 'VND'}}</td>  
             </tr>
           {{/each}} 
         </tbody>
