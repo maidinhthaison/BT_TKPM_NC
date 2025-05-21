@@ -185,7 +185,7 @@ app.post("/search", async (req, res) => {
       const data = response.data;
       const status = data.status;
       const user = localStorage.getItem("user");
-
+      
       if (status == HTTP_CODE[200].code) {
         res.render("tracuu", {
           layout: "traCuuLayout",

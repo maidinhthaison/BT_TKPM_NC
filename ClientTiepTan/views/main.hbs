@@ -1,45 +1,46 @@
-
-
 {{#if orderDetails}}
-<form id="searchForm" action="/search" method="post">
-  <div class="search-container">
-    <input type="text" id="inputSearch" name="inputSearch" placeholder="Tìm kiếm..." />
-    <button type="submit" id="searchButton">Tìm kiếm</button>
-  </div>
-</form>
-<div style="display: flex; flex-direction: column; min-height: 100vh;">
-  <table>
-    <thead>
-      <tr>
-        <th>Mã Order</th>
-        <th>Ngày thuê</th>
-        <th>Ngày trả</th>
-        <th>Tổng tiền</th>
-        <th>Khách hàng</th>
-        <th>Phòng đặt</th>
-        <th>Chi tiết</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each orderDetails}}
+  <form id="searchForm" action="/search" method="post">
+    <div class="search-container">
+      <input
+        type="text"
+        id="inputSearch"
+        name="inputSearch"
+        placeholder="Tìm kiếm..."
+      />
+      <button type="submit" id="searchButton">Tìm kiếm</button>
+    </div>
+  </form>
+  <div style="display: flex; flex-direction: column; min-height: 100vh;">
+    <table class="simple-table">
+      <thead>
         <tr>
-          <td>{{id}}</td>
-          <td>{{ngayThue}}</td>
-          <td>{{ngayTra}}</td>
-          <td>{{tongtien}}</td>
-          <td>Tên: {{khachDatPhong.hoTen}}<br>SDT: {{khachDatPhong.dienThoai}}</td>
-          <td>{{phongDaDat.tenPhong}}<br>{{phongDaDat.loaiPhong.tenLoaiPhong}}</td>
-          <td><a href="/detail?id={{id}}" class="button-link">Chi tiết</a></td>
+          <th>Số phòng</th>
+          <th>Ngày nhận</th>
+          <th>Ngày trả</th>
+          <th>Khách hàng</th>
+          <th>Tổng tiền</th>
         </tr>
-      {{/each}} 
-    </tbody>
-  </table>
-</div>  
+      </thead>
+      <tbody>
+        {{#each orderDetails}}
+          <tr>
+            <td>{{phongDaDat.tenPhong}}<br
+              />{{phongDaDat.loaiPhong.tenLoaiPhong}}</td>
+            <td>{{ngayThue}}</td>
+            <td>{{ngayTra}}</td>
+            <td>Tên:
+              {{khachDatPhong.hoTen}}<br />CMND:
+              {{khachDatPhong.cccd}}</td>
+            <td>{{formatCurrency tongtien "vi-VN" "VND"}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
 {{else}}
-<div style="text-align: center;">
-  <p class="center-text">Không có đơn phòng nào</p>
-  <a href="/" class="button-link" >Thử lại</a>
-</div>
+  <div style="text-align: center;">
+    <p class="center-text">Không có đơn phòng nào</p>
+    <a href="/" class="button-link">Thử lại</a>
+  </div>
 
 {{/if}}
-
